@@ -40,8 +40,8 @@ public class DragObjects : MonoBehaviour
         string thisGameObject;
         string collisinGameObject;
     
-        thisGameObject = gameObject.name.Substring(0, name.IndexOf("_"));
-        collisinGameObject = collision.gameObject.name.Substring(0, name.IndexOf("_"));        
+        thisGameObject = gameObject.name.Substring(0, name.IndexOf(""));
+        collisinGameObject = collision.gameObject.name.Substring(0, name.IndexOf(""));        
     
         if (mouseButtonReleased && thisGameObject == "Cube" && thisGameObject == collisinGameObject)
         {
