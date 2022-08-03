@@ -1,74 +1,69 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
-using Quaternion = UnityEngine.Quaternion;
-using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject ArcherPrefab;
     public GameObject MeleePrefab;
-    
-    public GameObject[] ArcherSpawnPoints;
-    public GameObject[] MeleeSpawnPoints;
-    
+
     public Button ArcherButton;
     public Button MeleeButton;
-    
-    private Vector3 offset;
-    private Transform spawnPoint;
-    
+
+    private Vector3 offset = new Vector3(0, 0.5f, 0);
+
+    [SerializeField] GridSystem gridSystem;
+    public int spawnPosCol;
+    public int spawnPosRow;
+    public Vector3 spawnPos;
+
 
     private void Start()
     {
+
+        gridSystem = FindObjectOfType<GridSystem>();
         ArcherButton.onClick.AddListener(() => { SpawnArcher(); });
         MeleeButton.onClick.AddListener(() => { SpawnMelee(); });
     }
-    
+
 
     public void SpawnArcher()
     {
-        
-        int index = Random.Range(0, ArcherSpawnPoints.Length);
-        offset = new Vector3(0, 0.5f, 0);
 
-        foreach (var point in ArcherSpawnPoints)
+        spawnPosCol = Random.Range(0, gridSystem.cols);
+        spawnPosRow = Random.Range(0, gridSystem.rows);
+        spawnPos = gridSystem.gridArray[spawnPosCol, spawnPosRow].transform.position;
+
+
+
+        if (gridSystem.gridArray[spawnPosCol, spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
         {
-            if (point.GetComponent<CollisionDetection>().IsPointEmpty)
-            {
-                spawnPoint = point.transform;
-            }
-            else
-            {
-                Instantiate(ArcherPrefab, point.transform.position + offset, Quaternion.identity);
-                break;
-            }
+            Debug.Log("Collision Dedected");
         }
+        else
+        {
+            Instantiate(ArcherPrefab, gridSystem.gridArray[spawnPosCol, spawnPosRow].transform.position + offset, Quaternion.identity);
+        }
+
     }
-    
+
     public void SpawnMelee()
     {
-        int index = Random.Range(0, MeleeSpawnPoints.Length);
-        offset = new Vector3(0, 0.5f, 0);
-        
-        foreach (var point in MeleeSpawnPoints)
+
+        spawnPosCol = Random.Range(0, gridSystem.cols);
+        spawnPosRow = Random.Range(0, gridSystem.rows);
+        spawnPos = gridSystem.gridArray[spawnPosCol, spawnPosRow].transform.position;
+
+
+
+        if (gridSystem.gridArray[spawnPosCol, spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
         {
-            if (point.GetComponent<CollisionDetection>().IsPointEmpty)
-            {
-                spawnPoint = point.transform;
-            }
-            else
-            {
-                Instantiate(MeleePrefab, point.transform.position + offset, Quaternion.identity);
-                break;
-            }
+            Debug.Log("Collision Dedected");
+        }
+        else
+        {
+            Instantiate(MeleePrefab, gridSystem.gridArray[spawnPosCol, spawnPosRow].transform.position + offset, Quaternion.identity);
         }
     }
-    
-    
+
+
 }
