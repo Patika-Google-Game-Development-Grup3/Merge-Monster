@@ -27,20 +27,19 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnArcher()
     {
+        GetRandomSpawnPosition();
 
-        _spawnPosCol = Random.Range(0, _gridSystem.cols);
-        _spawnPosRow = Random.Range(0, _gridSystem.rows);
-        _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position;
-
-
-
-        if (_gridSystem.gridArray[_spawnPosCol, _spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
+        foreach (var gridArray in _gridSystem.gridArray)
         {
-            Debug.Log("Collision Dedected");
-        }
-        else
-        {
-            Instantiate(ArcherPrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+            if (_gridSystem.gridArray[_spawnPosCol, _spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
+            {
+                _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset;
+            }
+            else
+            {
+                Instantiate(ArcherPrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+                break;
+            }
         }
 
     }
@@ -48,21 +47,25 @@ public class SpawnManager : MonoBehaviour
     public void SpawnMelee()
     {
 
-        _spawnPosCol = Random.Range(0, _gridSystem.cols);
-        _spawnPosRow = Random.Range(0, _gridSystem.rows);
-        _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position;
-
-
-
-        if (_gridSystem.gridArray[_spawnPosCol, _spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
+        foreach (var gridArray in _gridSystem.gridArray)
         {
-            Debug.Log("Collision Dedected");
-        }
-        else
-        {
-            Instantiate(MeleePrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+            if (_gridSystem.gridArray[_spawnPosCol, _spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
+            {
+                _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset;
+            }
+            else
+            {
+                Instantiate(MeleePrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+                break;
+            }
         }
     }
 
+    void GetRandomSpawnPosition()
+    {
+        _spawnPosCol = Random.Range(0, _gridSystem.cols);
+        _spawnPosRow = Random.Range(0, _gridSystem.rows);
+        _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position;
+    }
 
 }
