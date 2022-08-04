@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
@@ -9,18 +10,16 @@ public class SpawnManager : MonoBehaviour
     public Button ArcherButton;
     public Button MeleeButton;
 
+    [SerializeField] GridSystem _gridSystem;
+    private int _spawnPosCol;
+    private int _spawnPosRow;
+    private Vector3 _spawnPos;
     private Vector3 offset = new Vector3(0, 0.5f, 0);
-
-    [SerializeField] GridSystem gridSystem;
-    public int spawnPosCol;
-    public int spawnPosRow;
-    public Vector3 spawnPos;
-
 
     private void Start()
     {
 
-        gridSystem = FindObjectOfType<GridSystem>();
+        _gridSystem = FindObjectOfType<GridSystem>();
         ArcherButton.onClick.AddListener(() => { SpawnArcher(); });
         MeleeButton.onClick.AddListener(() => { SpawnMelee(); });
     }
@@ -28,20 +27,19 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnArcher()
     {
+        GetRandomSpawnPosition();
 
-        spawnPosCol = Random.Range(0, gridSystem.cols);
-        spawnPosRow = Random.Range(0, gridSystem.rows);
-        spawnPos = gridSystem.gridArray[spawnPosCol, spawnPosRow].transform.position;
-
-
-
-        if (gridSystem.gridArray[spawnPosCol, spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
+        foreach (var gridArray in _gridSystem.gridArray)
         {
-            Debug.Log("Collision Dedected");
-        }
-        else
-        {
-            Instantiate(ArcherPrefab, gridSystem.gridArray[spawnPosCol, spawnPosRow].transform.position + offset, Quaternion.identity);
+            if (_gridSystem.gridArray[_spawnPosCol, _spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
+            {
+                _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset;
+            }
+            else
+            {
+                Instantiate(ArcherPrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+                break;
+            }
         }
 
     }
@@ -49,21 +47,25 @@ public class SpawnManager : MonoBehaviour
     public void SpawnMelee()
     {
 
-        spawnPosCol = Random.Range(0, gridSystem.cols);
-        spawnPosRow = Random.Range(0, gridSystem.rows);
-        spawnPos = gridSystem.gridArray[spawnPosCol, spawnPosRow].transform.position;
-
-
-
-        if (gridSystem.gridArray[spawnPosCol, spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
+        foreach (var gridArray in _gridSystem.gridArray)
         {
-            Debug.Log("Collision Dedected");
-        }
-        else
-        {
-            Instantiate(MeleePrefab, gridSystem.gridArray[spawnPosCol, spawnPosRow].transform.position + offset, Quaternion.identity);
+            if (_gridSystem.gridArray[_spawnPosCol, _spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
+            {
+                _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset;
+            }
+            else
+            {
+                Instantiate(MeleePrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+                break;
+            }
         }
     }
 
+    void GetRandomSpawnPosition()
+    {
+        _spawnPosCol = Random.Range(0, _gridSystem.cols);
+        _spawnPosRow = Random.Range(0, _gridSystem.rows);
+        _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position;
+    }
 
 }
