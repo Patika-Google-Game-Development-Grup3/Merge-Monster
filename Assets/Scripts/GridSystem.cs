@@ -4,9 +4,8 @@ public class GridSystem : MonoBehaviour
 {
     public int x = 0;
     public int y = 0;
-    public int rows = 7;
-    public int cols = 7;
-    public int scale = 1;
+    public int rows, cols;
+    public float x_Space,z_Space;
     public GameObject gridPrefab;
     public GameObject characterPrafab;
     public GameObject GridParentObject;
@@ -40,7 +39,7 @@ public class GridSystem : MonoBehaviour
         {
             for (int j = 0; j < rows; j++)
             {
-                GameObject obj = Instantiate(gridPrefab, new Vector3(leftBottomLocation.x + i , leftBottomLocation.y, leftBottomLocation.z + j), Quaternion.identity);
+                GameObject obj = Instantiate(gridPrefab, new Vector3(x_Space* (leftBottomLocation.x + i) , 0, z_Space* (leftBottomLocation.z + j)), Quaternion.identity);
                 obj.transform.SetParent(GridParentObject.transform);
 
                 x = i;
