@@ -8,7 +8,7 @@ public class DragObjects : MonoBehaviour
 
     float mZCoord;
 
-    public bool mouseButtonReleased;
+    public static bool mouseButtonReleased;
 
     void OnMouseDown()
     {

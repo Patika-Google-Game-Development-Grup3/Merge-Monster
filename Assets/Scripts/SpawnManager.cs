@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+
+
 public class SpawnManager : MonoBehaviour
 {
     public GameObject ArcherPrefab;
@@ -15,6 +17,8 @@ public class SpawnManager : MonoBehaviour
     private int _spawnPosRow;
     private Vector3 _spawnPos;
     private Vector3 offset = new Vector3(0, 0.5f, 0);
+    
+   
 
     private void Start()
     {
@@ -38,6 +42,7 @@ public class SpawnManager : MonoBehaviour
             else
             {
                 Instantiate(ArcherPrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+                _gridSystem.gridArray[_spawnPosCol, _spawnPosRow] = gameObject;
                 break;
             }
         }
@@ -56,6 +61,7 @@ public class SpawnManager : MonoBehaviour
             else
             {
                 Instantiate(MeleePrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+                
                 break;
             }
         }
@@ -63,9 +69,18 @@ public class SpawnManager : MonoBehaviour
 
     void GetRandomSpawnPosition()
     {
+        
         _spawnPosCol = Random.Range(0, _gridSystem.cols);
         _spawnPosRow = Random.Range(0, _gridSystem.rows);
+
+        while (_gridSystem.gridArray[_spawnPosCol,_spawnPosRow] == gameObject) 
+        {
+            _spawnPosCol = Random.Range(0, _gridSystem.cols);
+            _spawnPosRow = Random.Range(0, _gridSystem.rows);
+        
         _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position;
+        }
+        
     }
 
 }
