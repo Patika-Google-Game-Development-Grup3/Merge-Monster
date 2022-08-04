@@ -34,28 +34,7 @@ public class DragObjects : MonoBehaviour
       transform.position = GetMouseWorldPos() + mOffset;
    }
 
-   // Merge two object together when they collide with each other. 
-    void OnTriggerStay(Collider collision)
-    {
-        string thisGameObject;
-        string collisinGameObject;
     
-        thisGameObject = gameObject.name.Substring(0, name.IndexOf(""));
-        collisinGameObject = collision.gameObject.name.Substring(0, name.IndexOf(""));        
+
     
-        if (mouseButtonReleased && thisGameObject == "Cube" && thisGameObject == collisinGameObject)
-        {
-            
-            Instantiate(Resources.Load("Prefabs/Big_Cube"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }else if (mouseButtonReleased && thisGameObject == "Big" && thisGameObject == collisinGameObject)
-        {
-            Instantiate(Resources.Load("Prefabs/Sphere_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-    }
 }
