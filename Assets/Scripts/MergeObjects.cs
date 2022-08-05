@@ -5,18 +5,15 @@ using UnityEngine;
 public class MergeObjects : MonoBehaviour
 {
     
-
-    void Start() {
-        
-    }
     // Merge two object together when they collide with each other. 
     void OnTriggerStay(Collider collision)
     {
         string thisGameObject;
         string collisinGameObject;
-        
-        thisGameObject = gameObject.name.Substring(0, name.IndexOf("_"));
+    
+        thisGameObject = gameObject.name.Substring(0, name.IndexOf("_"));        
         collisinGameObject = collision.gameObject.name.Substring(0, name.IndexOf("_"));        
+        
     
         if (DragObjects.mouseButtonReleased && thisGameObject == "Archer" && thisGameObject == collisinGameObject)
         {
@@ -31,6 +28,11 @@ public class MergeObjects : MonoBehaviour
             DragObjects.mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
+        }else {
+            if(DragObjects.mouseButtonReleased)
+            {
+                gameObject.transform.position = DragObjects.pos;
+            }
         }
     }
 

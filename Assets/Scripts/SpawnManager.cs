@@ -12,13 +12,12 @@ public class SpawnManager : MonoBehaviour
     public Button ArcherButton;
     public Button MeleeButton;
 
-    [SerializeField] GridSystem _gridSystem;
+    public GridSystem _gridSystem;
     private int _spawnPosCol;
     private int _spawnPosRow;
     private Vector3 _spawnPos;
     private Vector3 offset = new Vector3(0, 0.5f, 0);
     
-   
 
     private void Start()
     {
@@ -33,38 +32,20 @@ public class SpawnManager : MonoBehaviour
     {
         GetRandomSpawnPosition();
 
-        foreach (var gridArray in _gridSystem.gridArray)
-        {
-            if (_gridSystem.gridArray[_spawnPosCol, _spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
-            {
-                _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset;
-            }
-            else
-            {
                 Instantiate(ArcherPrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
                 _gridSystem.gridArray[_spawnPosCol, _spawnPosRow] = gameObject;
-                break;
-            }
-        }
+            
 
     }
 
     public void SpawnMelee()
     {
 
-        foreach (var gridArray in _gridSystem.gridArray)
-        {
-            if (_gridSystem.gridArray[_spawnPosCol, _spawnPosRow].GetComponent<CollisionDetection>().IsPointEmpty)
-            {
-                _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset;
-            }
-            else
-            {
+        
                 Instantiate(MeleePrefab, _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position + offset, Quaternion.identity);
+                _gridSystem.gridArray[_spawnPosCol, _spawnPosRow] = gameObject;
                 
-                break;
-            }
-        }
+        
     }
 
     void GetRandomSpawnPosition()
@@ -77,6 +58,8 @@ public class SpawnManager : MonoBehaviour
         {
             _spawnPosCol = Random.Range(0, _gridSystem.cols);
             _spawnPosRow = Random.Range(0, _gridSystem.rows);
+            Debug.Log(_spawnPosCol);
+            Debug.Log(_spawnPosRow);
         
         _spawnPos = _gridSystem.gridArray[_spawnPosCol, _spawnPosRow].transform.position;
         }

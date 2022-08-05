@@ -5,6 +5,9 @@ using UnityEngine;
 public class DragObjects : MonoBehaviour
 {
     private Vector3 mOffset;
+    public static Vector3 pos;
+
+    
 
     float mZCoord;
 
@@ -15,6 +18,8 @@ public class DragObjects : MonoBehaviour
         mouseButtonReleased = false;
         mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
         mOffset = gameObject.transform.position - GetMouseWorldPos();
+        pos = gameObject.transform.position;
+       
     }
 
     void OnMouseUp()
@@ -32,7 +37,9 @@ public class DragObjects : MonoBehaviour
    void OnMouseDrag()
    {
       transform.position = GetMouseWorldPos() + mOffset;
+      
    }
+
 
     
 

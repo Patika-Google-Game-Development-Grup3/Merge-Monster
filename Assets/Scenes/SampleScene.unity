@@ -880,18 +880,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c3ebae2d557d34cb85ea702cf93c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
   rows: 8
   cols: 8
   x_Space: 1.5
   z_Space: 1.5
   gridPrefab: {fileID: 5604053762831332692, guid: ecc9936ec48b4c241aa3e7485f713f78, type: 3}
-  characterPrafab: {fileID: 2673884666120432827, guid: f415a0bb333252e41a92fe37c131bc4d, type: 3}
   GridParentObject: {fileID: 1793822216}
-  leftBottomLocation: {x: -6, y: 2, z: -3}
-  testRow: 0
-  testCol: 0
+  leftBottomLocation: {x: 0, y: 0.5, z: 0}
 --- !u!4 &1468469039
 Transform:
   m_ObjectHideFlags: 0
