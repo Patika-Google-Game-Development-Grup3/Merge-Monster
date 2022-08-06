@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec95e7e5f67ade645b860f869f58141d, type: 3}
+  m_Name: Level1
+  m_EditorClassIdentifier: 
+  LevelDatas:
+    LevelBackground: {fileID: 0}
+    LevelParentPrefab: {fileID: 1052567413403341238, guid: 2670cc8158908ac4ea139ebeff804d85, type: 3}
+  PlayerDatas:
+    PlayerTotalMoney: 0
+  UIDatas:
+    ButtonCanvas: {fileID: 1399241483167039481, guid: bdd9a8889920ac049abdada2541f176a, type: 3}
+    ArcherButton: {fileID: 5403501132297606290, guid: fb68e7fe448769e47894ef930b2d19e5, type: 3}
+    MeleeButton: {fileID: 1492884848675984705, guid: dacc19f80c71cdd4eacd82cb435514a5, type: 3}
+  GridDatas:
+    GridPrefab: {fileID: 603876108087680889, guid: acc2cd397cfb4d64ab98b28d50f1330c, type: 3}
+    GridParentObject: {fileID: 4298423317743178706, guid: dcf2b78b12325eb4c88b6809e3cf0fe8, type: 3}
+    GridColumns: 8
+    GridRows: 8
+  CharacterDatas:
+  - {fileID: 11400000, guid: 19bf35d224e1dfb4d85cc50272963723, type: 2}
+  - {fileID: 11400000, guid: e197a760a4b0518448cf0e2fa28e21d9, type: 2}
