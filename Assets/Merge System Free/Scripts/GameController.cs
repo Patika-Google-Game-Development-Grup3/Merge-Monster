@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour 
+public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
@@ -12,14 +12,17 @@ public class GameController : MonoBehaviour
     private Vector3 _target;
     private ItemInfo carryingItem;
 
+    private int _counter = 0;
+
     private Dictionary<int, Slot> slotDictionary;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
         Utils.InitResources();
     }
 
-    private void Start() 
+    private void Start()
     {
         slotDictionary = new Dictionary<int, Slot>();
 
@@ -31,7 +34,7 @@ public class GameController : MonoBehaviour
     }
 
     //handle user input
-    private void Update() 
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -61,10 +64,11 @@ public class GameController : MonoBehaviour
 
     void SendRayCast()
     {
+
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
- 
+
         //we hit something
-        if(hit.collider != null)
+        if (hit.collider != null)
         {
             //we are grabbing the item in a full slot
             var slot = hit.transform.GetComponent<Slot>();
@@ -90,7 +94,7 @@ public class GameController : MonoBehaviour
             else if (slot.state == SlotState.Full && carryingItem != null)
             {
                 //check item in the slot
-                if (slot.currentItem.id == carryingItem.itemId)
+                if (slot.currentItem.id == carryingItem.itemId && carryingItem.itemId + 2 < 6)
                 {
                     print("merged");
                     OnItemMergedWithTarget(slot.id);
@@ -100,7 +104,7 @@ public class GameController : MonoBehaviour
                     OnItemCarryFail();
                 }
             }
-            
+
         }
         else
         {
@@ -117,20 +121,21 @@ public class GameController : MonoBehaviour
         _target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _target.z = 0;
         var delta = 10 * Time.deltaTime;
-        
+
         delta *= Vector3.Distance(transform.position, _target);
         carryingItem.transform.position = Vector3.MoveTowards(carryingItem.transform.position, _target, delta);
     }
 
     void OnItemMergedWithTarget(int targetSlotId)
     {
-       
+
         var slot = GetSlotById(targetSlotId);
         Destroy(slot.currentItem.gameObject);
-        
-        slot.CreateItem(carryingItem.itemId + 2);// asdasdasfasfasdasdasdadsafasfasdasasdasdasdasdasdasdasdasda
 
+        slot.CreateItem(carryingItem.itemId + 2);
         Destroy(carryingItem.gameObject);
+        _counter--;
+
     }
 
     void OnItemCarryFail()
@@ -148,16 +153,17 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        var rand = UnityEngine.Random.Range(0, slots.Length);
+        var rand = UnityEngine.Random.Range(32, slots.Length);
         var slot = GetSlotById(rand);
 
         while (slot.state == SlotState.Full)
         {
-            rand = UnityEngine.Random.Range(0, slots.Length);
+            rand = UnityEngine.Random.Range(32, slots.Length);
             slot = GetSlotById(rand);
         }
-
+        _counter++;
         slot.CreateItem(0);
+
     }
     public void PlaceRandomMelee()
     {
@@ -167,30 +173,32 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        var rand = UnityEngine.Random.Range(0, slots.Length);
+        var rand = UnityEngine.Random.Range(32, slots.Length);
         var slot = GetSlotById(rand);
 
         while (slot.state == SlotState.Full)
         {
-            rand = UnityEngine.Random.Range(0, slots.Length);
+            rand = UnityEngine.Random.Range(32, slots.Length);
             slot = GetSlotById(rand);
         }
-
+        _counter++;
         slot.CreateItem(1);
+
     }
 
     bool AllSlotsOccupied()
     {
         foreach (var slot in slots)
         {
-            if (slot.state == SlotState.Empty)
+            if (slot.state == SlotState.Full && slots.Length / 2 == _counter)
             {
-                //empty slot found
-                return false;
+                // all slots are full
+                return true;
             }
         }
-        //no slot empty 
-        return true;
+        // not all slots are full
+        return false;
+
     }
 
     Slot GetSlotById(int id)
