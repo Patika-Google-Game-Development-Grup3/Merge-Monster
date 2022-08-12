@@ -21,4 +21,8 @@ public class CollisionDetection : MonoBehaviour
     {
         IsPointEmpty = false;
     }
+    private void OnTriggerStay(Collider other)
+    {
+        gameObject.transform.position = DragObjects.pos;
+    }
 }
