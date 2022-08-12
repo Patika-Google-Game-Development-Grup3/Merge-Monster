@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,8 +23,12 @@ public class UIManager : MonoBehaviour
     public Button MergeButton;
     public Button QuitButton;
 
+    public TextMeshProUGUI goldPoint;
+    private int gold;
+
     private int sceneToContinue;
 
+    public int Gold { get => gold; set => gold = value; }
 
     private void Awake()
     {
@@ -42,7 +47,7 @@ public class UIManager : MonoBehaviour
         MergeButton.onClick.AddListener(() => { ChangeMenu(MainMenu, MergeMenu); });
         QuitButton.onClick.AddListener(() => { Application.Quit(); });
         
-
+        UpdateGold(5000);
     }
 
 
@@ -75,6 +80,20 @@ public class UIManager : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+    }
+
+    public void UpdateGold(int amount)
+    {
+        Gold += amount;
+        goldPoint.text = Gold.ToString();
+    }
+
+    public int ItemPrice (int amount)
+    {
+        Gold -= amount;
+        goldPoint.text = Gold.ToString();
+
+        return Gold;
     }
 
 }
