@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    public UIManager uiManager;
 
     public Slot[] slots;
 
@@ -13,6 +14,7 @@ public class GameController : MonoBehaviour
     private ItemInfo carryingItem;
 
     private int _counter = 0;
+    private int _archerCounter, _meleeCounter;
 
     private Dictionary<int, Slot> slotDictionary;
 
@@ -24,6 +26,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        // getComponent uiManager
+        uiManager = FindObjectOfType<UIManager>();
         slotDictionary = new Dictionary<int, Slot>();
 
         for (int i = 0; i < slots.Length; i++)
@@ -98,6 +102,8 @@ public class GameController : MonoBehaviour
                 {
                     print("merged");
                     OnItemMergedWithTarget(slot.id);
+                    if(slot.currentItem.id == 0 || slot.currentItem.id == 2) _archerCounter--;
+                    else _meleeCounter--;
                 }
                 else
                 {
@@ -152,18 +158,30 @@ public class GameController : MonoBehaviour
             Debug.Log("No empty slot available!");
             return;
         }
-
-        var rand = UnityEngine.Random.Range(32, slots.Length);
-        var slot = GetSlotById(rand);
-
-        while (slot.state == SlotState.Full)
+        _archerCounter++;
+        _counter = _archerCounter + _meleeCounter;
+        if (uiManager.Gold >= _archerCounter * 10)
         {
-            rand = UnityEngine.Random.Range(32, slots.Length);
-            slot = GetSlotById(rand);
-        }
-        _counter++;
-        slot.CreateItem(0);
+            var rand = UnityEngine.Random.Range(32, slots.Length);
+            var slot = GetSlotById(rand);
 
+            while (slot.state == SlotState.Full)
+            {
+                rand = UnityEngine.Random.Range(32, slots.Length);
+                slot = GetSlotById(rand);
+            }
+
+            uiManager.ItemPrice(_archerCounter * 10);
+            slot.CreateItem(0);
+            Debug.Log("Archer placed"+ _counter);
+        }
+        else
+        {
+            Debug.Log("Not enough gold!");
+            _archerCounter--;
+            _counter--;
+            Debug.Log("aa" + _counter);
+        }
     }
     public void PlaceRandomMelee()
     {
@@ -172,18 +190,31 @@ public class GameController : MonoBehaviour
             Debug.Log("No empty slot available!");
             return;
         }
-
-        var rand = UnityEngine.Random.Range(32, slots.Length);
-        var slot = GetSlotById(rand);
-
-        while (slot.state == SlotState.Full)
+        _meleeCounter++;
+        _counter = _meleeCounter + _archerCounter;
+        if (uiManager.Gold >= _meleeCounter * 10)
         {
-            rand = UnityEngine.Random.Range(32, slots.Length);
-            slot = GetSlotById(rand);
-        }
-        _counter++;
-        slot.CreateItem(1);
+            var rand = UnityEngine.Random.Range(32, slots.Length);
+            var slot = GetSlotById(rand);
 
+            while (slot.state == SlotState.Full)
+            {
+                rand = UnityEngine.Random.Range(32, slots.Length);
+                slot = GetSlotById(rand);
+            }
+
+            uiManager.ItemPrice(_meleeCounter * 10);
+            slot.CreateItem(1);
+            Debug.Log("Archer placed"+ _counter);
+        }
+        else
+        {
+            Debug.Log("Not enough gold!");
+            
+            _meleeCounter--;
+            _counter--;
+            Debug.Log("mm" + _counter);
+        }
     }
 
     bool AllSlotsOccupied()
