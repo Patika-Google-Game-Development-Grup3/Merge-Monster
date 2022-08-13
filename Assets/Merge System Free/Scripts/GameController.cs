@@ -6,17 +6,22 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+
     public UIManager uiManager;
 
-    public Slot[] slots;
 
     private Vector3 _target;
+
     private ItemInfo carryingItem;
 
     private int _counter = 0;
+
     private int _archerCounter, _meleeCounter;
 
-    private Dictionary<int, Slot> slotDictionary;
+    public Dictionary<int, Slot> slotDictionary;
+
+    public List<Slot> slots;
+
 
     private void Awake()
     {
@@ -28,13 +33,6 @@ public class GameController : MonoBehaviour
     {
         // getComponent uiManager
         uiManager = FindObjectOfType<UIManager>();
-        slotDictionary = new Dictionary<int, Slot>();
-
-        for (int i = 0; i < slots.Length; i++)
-        {
-            slots[i].id = i;
-            slotDictionary.Add(i, slots[i]);
-        }
     }
 
     //handle user input
@@ -42,7 +40,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SendRayCast();
+            SendRayCast(false);
         }
 
         if (Input.GetMouseButton(0) && carryingItem)
@@ -53,32 +51,34 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             //Drop item
-            SendRayCast();
+            SendRayCast(true);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
             PlaceRandomArcher();
         }
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             PlaceRandomMelee();
         }
     }
 
-    void SendRayCast()
+    void SendRayCast(bool isMouseUp)
     {
 
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
 
         //we hit something
         if (hit.collider != null)
         {
             //we are grabbing the item in a full slot
             var slot = hit.transform.GetComponent<Slot>();
-            if (slot.state == SlotState.Full && carryingItem == null)
+
+            if (!isMouseUp && slot.state == SlotState.Full && carryingItem == null)
             {
-                var itemGO = (GameObject)Instantiate(Resources.Load("Prefabs/ItemDummy"));
+                var itemGO = (GameObject) Instantiate(Resources.Load("Prefabs/ItemDummy"));
                 itemGO.transform.position = slot.transform.position;
                 itemGO.transform.localScale = Vector3.one * 2;
 
@@ -102,7 +102,7 @@ public class GameController : MonoBehaviour
                 {
                     print("merged");
                     OnItemMergedWithTarget(slot.id);
-                    if(slot.currentItem.id == 0 || slot.currentItem.id == 2) _archerCounter--;
+                    if (slot.currentItem.id == 0 || slot.currentItem.id == 2) _archerCounter--;
                     else _meleeCounter--;
                 }
                 else
@@ -118,18 +118,27 @@ public class GameController : MonoBehaviour
             {
                 return;
             }
+
             OnItemCarryFail();
         }
     }
 
+
     void OnItemSelected()
     {
         _target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        _target.z = 0;
-        var delta = 10 * Time.deltaTime;
+        _target.Normalize();
 
-        delta *= Vector3.Distance(transform.position, _target);
-        carryingItem.transform.position = Vector3.MoveTowards(carryingItem.transform.position, _target, delta);
+        carryingItem.transform.position = GetPos(Input.mousePosition, 2);
+
+    }
+
+    public Vector3 GetPos(Vector3 screenPosition, float z)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+        Plane xy = new Plane(Vector3.forward, new Vector3(0, z, 0));
+        xy.Raycast(ray, out float distance);
+        return ray.GetPoint(distance);
     }
 
     void OnItemMergedWithTarget(int targetSlotId)
@@ -158,22 +167,24 @@ public class GameController : MonoBehaviour
             Debug.Log("No empty slot available!");
             return;
         }
+
         _archerCounter++;
         _counter = _archerCounter + _meleeCounter;
-        if (uiManager.Gold >= _archerCounter * 10)
+
+        if (uiManager.Gold >= _archerCounter * 10 && _archerCounter < 33)
         {
-            var rand = UnityEngine.Random.Range(32, slots.Length);
+            var rand = UnityEngine.Random.Range(0, 32);
             var slot = GetSlotById(rand);
 
             while (slot.state == SlotState.Full)
             {
-                rand = UnityEngine.Random.Range(32, slots.Length);
+                rand = UnityEngine.Random.Range(0, 32);
                 slot = GetSlotById(rand);
             }
 
             uiManager.ItemPrice(_archerCounter * 10);
             slot.CreateItem(0);
-            Debug.Log("Archer placed"+ _counter);
+            Debug.Log("Archer placed" + _counter);
         }
         else
         {
@@ -190,27 +201,29 @@ public class GameController : MonoBehaviour
             Debug.Log("No empty slot available!");
             return;
         }
+
         _meleeCounter++;
         _counter = _meleeCounter + _archerCounter;
-        if (uiManager.Gold >= _meleeCounter * 10)
+
+        if (uiManager.Gold >= _meleeCounter * 10 && _meleeCounter < 33)
         {
-            var rand = UnityEngine.Random.Range(32, slots.Length);
+            var rand = UnityEngine.Random.Range(32, slots.Count);
             var slot = GetSlotById(rand);
 
             while (slot.state == SlotState.Full)
             {
-                rand = UnityEngine.Random.Range(32, slots.Length);
+                rand = UnityEngine.Random.Range(32, slots.Count);
                 slot = GetSlotById(rand);
             }
 
             uiManager.ItemPrice(_meleeCounter * 10);
             slot.CreateItem(1);
-            Debug.Log("Archer placed"+ _counter);
+            Debug.Log("Archer placed" + _counter);
         }
         else
         {
             Debug.Log("Not enough gold!");
-            
+
             _meleeCounter--;
             _counter--;
             Debug.Log("mm" + _counter);
@@ -221,12 +234,13 @@ public class GameController : MonoBehaviour
     {
         foreach (var slot in slots)
         {
-            if (slot.state == SlotState.Full && slots.Length / 2 == _counter)
+            if (slot.state == SlotState.Full && slots.Count / 2 == _counter)
             {
                 // all slots are full
                 return true;
             }
         }
+
         // not all slots are full
         return false;
 
