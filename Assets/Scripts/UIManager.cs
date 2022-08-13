@@ -7,7 +7,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    private GameController gameController;
+    [SerializeField]private GameController gameController;
 
     public GameObject MainMenu;
     public GameObject MergeMenu;
@@ -30,10 +30,7 @@ public class UIManager : MonoBehaviour
 
     public int Gold { get => gold; set => gold = value; }
 
-    private void Awake()
-    {
-        gameController = FindObjectOfType<GameController>();
-    }
+
 
     private void Start()
     {
@@ -60,6 +57,23 @@ public class UIManager : MonoBehaviour
             if (!MergeMenu.activeInHierarchy)
             {
                 SetActiveSlots.SetActive(false);
+                var slots = gameController.slots;
+                var settings = SettingsController.Instance;
+                settings._userSettingsSO.UserSettings.itemId = new List<int>();
+                settings._userSettingsSO.UserSettings.slotId = new List<int>();
+
+                foreach (var slot in slots)
+                {
+                    if (slot.currentItem == null)
+                    {
+                        continue;
+                    }
+                    var itemId = slot.currentItem.id;
+                    var slotId = slot.id;
+                    settings._userSettingsSO.UserSettings.itemId.Add(itemId);
+                    settings._userSettingsSO.UserSettings.slotId.Add(slotId);
+                }
+                settings.SaveSettings();
             }
             else
             {

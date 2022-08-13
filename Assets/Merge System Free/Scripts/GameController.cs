@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -21,7 +23,8 @@ public class GameController : MonoBehaviour
     public Dictionary<int, Slot> slotDictionary;
 
     public List<Slot> slots;
-
+    
+    
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class GameController : MonoBehaviour
     {
         // getComponent uiManager
         uiManager = FindObjectOfType<UIManager>();
+        SettingsController.Instance.LoadSettings();
     }
 
     //handle user input

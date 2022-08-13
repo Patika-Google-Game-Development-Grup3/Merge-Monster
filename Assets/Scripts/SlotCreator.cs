@@ -30,7 +30,13 @@ public class SlotCreator : MonoBehaviour
 
         gameController.slotDictionary = new Dictionary<int, Slot>();
         var cnt = 0;
-
+        var loadCnt = 0;
+        
+        var settings = SettingsController.Instance;
+        settings.LoadSettings();
+        var itemIds = settings._userSettingsSO.UserSettings.itemId;
+        var slotIds = settings._userSettingsSO.UserSettings.slotId;
+        
         for (int x = 0; x < gridSize.x; x++)
         {
             for (int y = 0; y < gridSize.y; y++)
@@ -39,6 +45,15 @@ public class SlotCreator : MonoBehaviour
                 slotInstance.id = cnt;
                 gameController.slots.Add(slotInstance);
                 gameController.slotDictionary.Add(cnt, slotInstance);
+                
+         
+                if (slotIds.Contains(cnt))
+                {
+                    var desiredItem = itemIds[loadCnt];
+                    slotInstance.CreateItem(desiredItem);
+                    loadCnt++;
+                }
+                
                 cnt++;
             }
         }
