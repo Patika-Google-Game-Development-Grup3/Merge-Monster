@@ -5,10 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class ToMenu : MonoBehaviour
 {
+    [SerializeField]private GameController gameController;
     private int currentSceneIndex;
 
     public void LoadMainMenu()
     {
+        var slots = gameController.slots;
+        var settings = SettingsController.Instance;
+        settings._userSettingsSO.UserSettings.itemId = new List<int>();
+        settings._userSettingsSO.UserSettings.slotId = new List<int>();
+
+        foreach (var slot in slots)
+        {
+            if (slot.currentItem == null)
+            {
+                continue;
+            }
+            var itemId = slot.currentItem.id;
+            var slotId = slot.id;
+            settings._userSettingsSO.UserSettings.itemId.Add(itemId);
+            settings._userSettingsSO.UserSettings.slotId.Add(slotId);
+        }
+        settings.SaveSettings();
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
         SceneManager.LoadScene(0);
