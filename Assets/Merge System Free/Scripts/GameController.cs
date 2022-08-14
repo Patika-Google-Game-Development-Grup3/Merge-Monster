@@ -96,7 +96,6 @@ public class GameController : MonoBehaviour
 
             if (!isMouseUp && slot.state == SlotState.Full && carryingItem == null)
             {
-                Debug.Log(hit.collider.gameObject.transform.GetChild(0).gameObject.tag);
                 if (hit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("2D"))
                 {
                     var itemGO = (GameObject) Instantiate(Resources.Load("Prefabs/ItemDummy"));
@@ -219,9 +218,19 @@ public class GameController : MonoBehaviour
 
     void OnItemCarryFail()
     {
-        var slot = GetSlotById(carryingItem.slotId);
-        slot.CreateItem(carryingItem.itemId);
-        Destroy(carryingItem.gameObject);
+        if (carryingItem.gameObject.CompareTag("2D"))
+        {
+            var slot = GetSlotById(carryingItem.slotId);
+            slot.CreateItem(carryingItem.itemId);
+            Destroy(carryingItem.gameObject);
+        }
+        else if (carryingItem.gameObject.CompareTag("3D"))
+        {
+            var slot = GetSlotById(carryingItem.slotId);
+            slot.CreateItem3D(carryingItem.itemId);
+            Destroy(carryingItem.gameObject);
+        }
+        
     }
 
     public void PlaceRandomArcher()

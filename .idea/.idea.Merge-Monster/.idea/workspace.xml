@@ -3,21 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="489af195-0fd4-43f0-b81e-c100b8df0304" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Merge-Monster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Merge-Monster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Resources/GameResources.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Resources/GameResources.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/StartMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/StartMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/LoadObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/LoadObjects.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SettingsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SettingsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/UserSettingsSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/UserSettingsSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Archer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Archer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Melee.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Melee.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Scripts/ArcherPropertiesSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Scripts/ArcherPropertiesSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Scripts/CharacterPropertiesSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Scripts/CharacterPropertiesSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +15,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/70/d1c0782e/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/0a/c277bf03/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/21/56a916f0/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/a9/f6c51a43/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/fe/797f44d6/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e40e5a8f982c4b618a930d29f9bd091c46a800/49/b226ebcc/AttributeUsageAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e40e5a8f982c4b618a930d29f9bd091c46a800/dd/6b302e84/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollisionDetection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveSystem/LoadObjects.cs" root0="FORCE_HIGHLIGHTING" />
@@ -85,10 +79,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="7888">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="7888" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -112,7 +106,8 @@
       <workItem from="1660402290960" duration="10587000" />
       <workItem from="1660413756788" duration="5107000" />
       <workItem from="1660475305745" duration="7130000" />
-      <workItem from="1660483218088" duration="1452000" />
+      <workItem from="1660483218088" duration="3018000" />
+      <workItem from="1660506976768" duration="1014000" />
     </task>
     <servers />
   </component>
