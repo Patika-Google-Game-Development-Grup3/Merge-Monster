@@ -12,4 +12,6 @@ public class UserSettings
 {
     public List<int> itemId;
     public List<int> slotId;
+    public int archerCounter;
+    public int meleeCounter;
 }
