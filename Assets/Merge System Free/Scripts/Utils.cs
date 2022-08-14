@@ -15,4 +15,9 @@ public static class Utils
     {
         return gameResources.items[itemId];
     }
+    
+    public static Mesh GetItemMeshById(int itemId)
+    {
+        return gameResources.meshes[itemId];
+    }
 }

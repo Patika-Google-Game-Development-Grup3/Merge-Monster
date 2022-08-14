@@ -3,17 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="489af195-0fd4-43f0-b81e-c100b8df0304" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Merge-Monster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Merge-Monster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Resources/GameResources.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Resources/GameResources.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Resources/Prefabs/Item.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Resources/Prefabs/Item.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Resources/Prefabs/ItemDummy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Resources/Prefabs/ItemDummy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/GameResources.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/GameResources.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/ItemInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/ItemInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/Slot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/Slot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/Utils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level2.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level2.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level3.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level3.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/StartMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/StartMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SlotCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SlotCreator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +29,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/0a/c277bf03/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/21/56a916f0/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/a9/f6c51a43/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
@@ -32,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveSystem/LoadObjects.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SlotCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SlotCreator3D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@4.1.5/Samples~/04 IntegratingSelfProvidedBackendReceiptValidation/IntegratingSelfProvidedBackendReceiptValidation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@4.1.5/Samples~/Apple App Store - 03 HandlingDeferredPurchases/HandlingDeferredPurchases.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@4.1.5/Samples~/Google Play Store - 04 HandlingDeferredPurchases/HandlingDeferredPurchases.cs" root0="SKIP_HIGHLIGHTING" />
@@ -85,10 +93,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18364">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="18364" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -111,6 +119,7 @@
       <workItem from="1659703078129" duration="4081000" />
       <workItem from="1660402290960" duration="10587000" />
       <workItem from="1660413756788" duration="5107000" />
+      <workItem from="1660475305745" duration="6455000" />
     </task>
     <servers />
   </component>

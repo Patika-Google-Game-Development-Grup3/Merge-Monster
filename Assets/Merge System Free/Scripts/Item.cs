@@ -8,11 +8,19 @@ public class Item : MonoBehaviour
     public Slot parentSlot;
 
     public SpriteRenderer visualRenderer;
+    public MeshFilter meshFilter;
 
     public void Init(int id, Slot slot)
     {
         this.id = id;
         this.parentSlot = slot;
         visualRenderer.sprite = Utils.GetItemVisualById(id);
+    }
+    
+    public void Init3D(int id, Slot slot)
+    {
+        this.id = id;
+        this.parentSlot = slot;
+        meshFilter.mesh = Utils.GetItemMeshById(id);
     }
 }
