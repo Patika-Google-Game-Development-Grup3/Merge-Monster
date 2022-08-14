@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   UserSettings:
-    itemId: 000000000100000001000000010000000100000001000000
-    slotId: 000000002000000020000000200000002000000020000000
+    itemId: 
+    slotId: 
