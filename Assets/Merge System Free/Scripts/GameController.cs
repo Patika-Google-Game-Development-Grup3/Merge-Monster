@@ -82,20 +82,44 @@ public class GameController : MonoBehaviour
 
             if (!isMouseUp && slot.state == SlotState.Full && carryingItem == null)
             {
-                var itemGO = (GameObject) Instantiate(Resources.Load("Prefabs/ItemDummy"));
-                itemGO.transform.position = slot.transform.position;
-                itemGO.transform.localScale = Vector3.one * 2;
+                Debug.Log(hit.collider.gameObject.transform.GetChild(0).gameObject.tag);
+                if (hit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("2D"))
+                {
+                    var itemGO = (GameObject) Instantiate(Resources.Load("Prefabs/ItemDummy"));
+                    itemGO.transform.position = slot.transform.position;
+                    itemGO.transform.localScale = Vector3.one * 2;
 
-                carryingItem = itemGO.GetComponent<ItemInfo>();
-                carryingItem.InitDummy(slot.id, slot.currentItem.id);
+                    carryingItem = itemGO.GetComponent<ItemInfo>();
+                    carryingItem.InitDummy(slot.id, slot.currentItem.id);
 
-                slot.ItemGrabbed();
+                    slot.ItemGrabbed();
+                }
+                else if (hit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("3D"))
+                {
+                    var itemGO = (GameObject) Instantiate(Resources.Load("Prefabs/ItemDummy3D"));
+                    itemGO.transform.position = slot.transform.position;
+                    itemGO.transform.localScale = Vector3.one * 2;
+
+                    carryingItem = itemGO.GetComponent<ItemInfo>();
+                    carryingItem.InitDummy3D(slot.id, slot.currentItem.id);
+
+                    slot.ItemGrabbed();
+                }
             }
             //we are dropping an item to empty slot
             else if (slot.state == SlotState.Empty && carryingItem != null)
             {
-                slot.CreateItem(carryingItem.itemId);
-                Destroy(carryingItem.gameObject);
+                if (carryingItem.visualRenderer!=null)
+                {
+                    slot.CreateItem(carryingItem.itemId);
+                    Destroy(carryingItem.gameObject);
+                }
+                else if (carryingItem.meshFilter != null)
+                {
+                    slot.CreateItem3D(carryingItem.itemId);
+                    Destroy(carryingItem.gameObject);
+                }
+               
             }
 
             //we are dropping to full
@@ -133,11 +157,25 @@ public class GameController : MonoBehaviour
         _target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _target.Normalize();
 
-        carryingItem.transform.position = GetPos(Input.mousePosition, 2);
+        if (carryingItem.gameObject.CompareTag("2D"))
+        {
+            carryingItem.transform.position = GetPos2D(Input.mousePosition, 2);
+        }
+        else if (carryingItem.gameObject.CompareTag("3D"))
+        {
+            carryingItem.transform.position = GetPos3D(Input.mousePosition, 2);
+        }
 
     }
+    private Vector3 GetPos3D(Vector3 screenPosition, float z)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+        Plane xy = new Plane(Vector3.up, new Vector3(0, z, 0));
+        xy.Raycast(ray, out float distance);
+        return ray.GetPoint(distance);
+    }
 
-    public Vector3 GetPos(Vector3 screenPosition, float z)
+    public Vector3 GetPos2D(Vector3 screenPosition, float z)
     {
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);
         Plane xy = new Plane(Vector3.forward, new Vector3(0, z, 0));
@@ -147,14 +185,22 @@ public class GameController : MonoBehaviour
 
     void OnItemMergedWithTarget(int targetSlotId)
     {
-
         var slot = GetSlotById(targetSlotId);
         Destroy(slot.currentItem.gameObject);
 
-        slot.CreateItem(carryingItem.itemId + 2);
-        Destroy(carryingItem.gameObject);
-        _counter--;
-
+        if (carryingItem.gameObject.CompareTag("2D"))
+        {
+            slot.CreateItem(carryingItem.itemId + 2);
+            Destroy(carryingItem.gameObject);
+            _counter--;
+        }
+        else if (carryingItem.gameObject.CompareTag("3D"))
+        {
+            slot.CreateItem3D(carryingItem.itemId + 2);
+            Destroy(carryingItem.gameObject);
+            _counter--;
+        }
+        
     }
 
     void OnItemCarryFail()

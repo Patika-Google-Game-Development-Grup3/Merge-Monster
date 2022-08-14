@@ -23,6 +23,20 @@ public class Slot : MonoBehaviour
         ChangeStateTo(SlotState.Full);
     }
 
+    public void CreateItem3D(int id)
+    {
+        var itemGO = (GameObject)Instantiate(Resources.Load("Prefabs/Item3D"));
+        
+        itemGO.transform.SetParent(this.transform);
+        itemGO.transform.localPosition = Vector3.zero;
+        itemGO.transform.localScale = Vector3.one;
+
+        currentItem = itemGO.GetComponent<Item>();
+        currentItem.Init3D(id, this);
+
+        ChangeStateTo(SlotState.Full);
+    }
+
     private void ChangeStateTo(SlotState targetState)
     {
         state = targetState;

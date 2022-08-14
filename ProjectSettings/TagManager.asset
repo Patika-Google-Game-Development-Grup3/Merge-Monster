@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Melee
+  - Archer
+  - 3D
+  - 2D
   layers:
   - Default
   - TransparentFX

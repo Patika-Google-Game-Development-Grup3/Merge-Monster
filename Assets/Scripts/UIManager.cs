@@ -84,7 +84,7 @@ public class UIManager : MonoBehaviour
 
     void ContinueGame()
     {
-        sceneToContinue = PlayerPrefs.GetInt("SavedScene");
+        sceneToContinue = 0; //PlayerPrefs.GetInt("SavedScene");
 
         if (sceneToContinue !=0 )
         {
@@ -93,6 +93,7 @@ public class UIManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(1);
+            
         }
     }
 
