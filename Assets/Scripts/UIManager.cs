@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
 
     void ChangeMenu(GameObject activeMenu, GameObject setMenu)
     {
+        
         if (setMenu != null && activeMenu)
         {
             activeMenu.SetActive(false);

@@ -408,23 +408,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7817310584954670713}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &866726304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866726301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f2a0eb80c568842b6216ab4ff9d6cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slot: {fileID: 149754862174182667, guid: 8e259d0ae15d243d8b1b2ff3b4d87461, type: 3}
-  gridSize: {x: 8, y: 8}
-  gameController: {fileID: 1917364460}
-  gap: {x: 2.5, y: 2.5}
-  offset: {x: -8.5, y: 0}
 --- !u!1 &1129367586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,16 +2557,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 866726304, guid: 60f40ef4bd304ed49a42f28af8b6ed69, type: 3}
+      propertyPath: offset.x
+      value: -8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 866726304, guid: 60f40ef4bd304ed49a42f28af8b6ed69, type: 3}
+      propertyPath: offset.y
+      value: -8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 866726304, guid: 60f40ef4bd304ed49a42f28af8b6ed69, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1917364460}
     - target: {fileID: 7817310584645812196, guid: 60f40ef4bd304ed49a42f28af8b6ed69,
         type: 3}
       propertyPath: m_Name
       value: Slots
       objectReference: {fileID: 0}
-    - target: {fileID: 7817310584645812198, guid: 60f40ef4bd304ed49a42f28af8b6ed69,
+    - target: {fileID: 7817310584645812196, guid: 60f40ef4bd304ed49a42f28af8b6ed69,
         type: 3}
-      propertyPath: gameController
-      value: 
-      objectReference: {fileID: 1917364460}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7817310584645812199, guid: 60f40ef4bd304ed49a42f28af8b6ed69,
         type: 3}
       propertyPath: m_RootOrder
@@ -2639,6 +2634,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 14828874, guid: 60f40ef4bd304ed49a42f28af8b6ed69, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60f40ef4bd304ed49a42f28af8b6ed69, type: 3}
