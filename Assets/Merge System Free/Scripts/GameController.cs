@@ -9,8 +9,8 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    public UIManager uiManager;
-
+    private UIManager _uiManager;
+    
 
     private Vector3 _target;
 
@@ -19,24 +19,38 @@ public class GameController : MonoBehaviour
     private int _counter = 0;
 
     private int _archerCounter, _meleeCounter;
+    private float _archerCost, _meleeCost;
+   
 
     public Dictionary<int, Slot> slotDictionary;
 
     public List<Slot> slots;
-    
+
+    [SerializeField] private CharacterPropertiesSO[] character;
     
 
     private void Awake()
     {
         instance = this;
         Utils.InitResources();
+        
     }
 
     private void Start()
     {
         // getComponent uiManager
-        uiManager = FindObjectOfType<UIManager>();
-        SettingsController.Instance.LoadSettings();
+        _uiManager = FindObjectOfType<UIManager>();
+        
+        
+        var settings = SettingsController.Instance;
+        settings.LoadSettings();
+
+        _archerCost = settings._userSettingsSO.UserSettings.archerCounter;
+       
+        _meleeCost = settings._userSettingsSO.UserSettings.meleeCounter;
+
+
+
     }
 
     //handle user input
@@ -217,11 +231,12 @@ public class GameController : MonoBehaviour
             Debug.Log("No empty slot available!");
             return;
         }
-
+        
         _archerCounter++;
+       
         _counter = _archerCounter + _meleeCounter;
 
-        if (uiManager.Gold >= _archerCounter * 10 && _archerCounter < 33)
+        if (_uiManager.Gold >= _archerCounter * 10 && _archerCounter < 33)
         {
             var rand = UnityEngine.Random.Range(0, 32);
             var slot = GetSlotById(rand);
@@ -232,9 +247,12 @@ public class GameController : MonoBehaviour
                 slot = GetSlotById(rand);
             }
 
-            uiManager.ItemPrice(_archerCounter * 10);
+            _archerCost++;
+            character[0].ArcherCost = _archerCost * 10;
+            _uiManager.ItemPrice(character[0].ArcherCost);
+            
             slot.CreateItem(0);
-            Debug.Log("Archer placed" + _counter);
+            Debug.Log("Archer cost " + character[0].ArcherCost);
         }
         else
         {
@@ -255,7 +273,7 @@ public class GameController : MonoBehaviour
         _meleeCounter++;
         _counter = _meleeCounter + _archerCounter;
 
-        if (uiManager.Gold >= _meleeCounter * 10 && _meleeCounter < 33)
+        if (_uiManager.Gold >= _meleeCounter * 10 && _meleeCounter < 33)
         {
             var rand = UnityEngine.Random.Range(32, slots.Count);
             var slot = GetSlotById(rand);
@@ -266,9 +284,12 @@ public class GameController : MonoBehaviour
                 slot = GetSlotById(rand);
             }
 
-            uiManager.ItemPrice(_meleeCounter * 10);
+            _meleeCost++;
+            character[1].MeleeCost = _meleeCost * 10;
+            _uiManager.ItemPrice(character[1].MeleeCost);
+            
             slot.CreateItem(1);
-            Debug.Log("Archer placed" + _counter);
+            Debug.Log("Archer placed" + character[1].MeleeCost);
         }
         else
         {

@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4a7b1b59a04fd7b69ae95dee1da4de, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 2673884666120432827, guid: f415a0bb333252e41a92fe37c131bc4d, type: 3}
+  CharacterPrefab: {fileID: 21300000, guid: fada5bff7ecc14eab897fd34f27d6baf, type: 3}
   CharacterHealth: 16
   CharacterAttackPower: 8
   CharacterAttackRange: 10
   CharacterAttackSpeed: 10
-  ArcherCost: 10
+  ArcherCost: 70
   MeleeCost: 0
-  ArrowPrefab: {fileID: 0}

@@ -54,6 +54,7 @@ public class SettingsController : MonoBehaviour
     public void LoadSettings()
     {
         string saveDirectory = Application.persistentDataPath + "/Resources";
+        
         if (!File.Exists(saveDirectory + "/userSettings.json"))
         {
             return;
