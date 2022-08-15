@@ -19,9 +19,8 @@ public class FightController : MonoBehaviour
     public int currentHealt;
     public int attackDamage = 20;
 
-    public float attackRate = 2f;
+    public float attackRate = 1f;
     float nextAttackTime = 0f;
-
 
 
 
@@ -35,10 +34,14 @@ public class FightController : MonoBehaviour
     void Update()
     {
         MoveNearTheOpponent();
-        if (Time.time >=nextAttackTime)
+
+        if (Time.time >= nextAttackTime)
         {
             Attack();
-            nextAttackTime = Time.time + 1f /attackRate;
+            nextAttackTime = Time.time + attackRate * 10;
+
+            Debug.Log("Time: " + Time.time);
+            Debug.Log("Next Attack Time: " + nextAttackTime);
         }
     }
     public GameObject FindClosestOpponent(GameObject[] opponents)
@@ -47,16 +50,19 @@ public class FightController : MonoBehaviour
 
         foreach (var g in opponents)
         {
-            float dist = Vector3.Distance(this.gameObject.transform.position, g.transform.position);
-
-
-            if (dist < oldDistance)
+            if (g.GetComponent<Collider>().enabled == true)
             {
-                closestObject = g;
-                oldDistance = dist;
+                float dist = Vector3.Distance(this.gameObject.transform.position, g.transform.position);
+
+
+                if (dist < oldDistance)
+                {
+                    closestObject = g;
+                    oldDistance = dist;
+                }
             }
+            
         }
-        //Debug.Log(closestObject.name);
         return closestObject;
 
     }
@@ -85,16 +91,17 @@ public class FightController : MonoBehaviour
         }
 
     }
-
+    
     void Attack()
     {
-        //Play an attack animation
+        //Attack animation
 
        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<FightController>().TakeDamage(attackDamage);
+            
         }
 
     }
@@ -123,7 +130,6 @@ public class FightController : MonoBehaviour
         //Die animation
         GetComponent<Collider>().enabled = false;
         this.enabled = false;
-
     }
 
 }
