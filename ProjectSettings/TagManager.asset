@@ -8,6 +8,9 @@ TagManager:
   - Archer
   - 3D
   - 2D
+  - Enemy
+  - Ally
+  - Level
   layers:
   - Default
   - TransparentFX
@@ -15,8 +18,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Red Team
+  - Blue Team
   - 
   - 
   - 

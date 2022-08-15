@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96d9965ec9b4da58325b6a17d807e2f, type: 3}
-  m_Name: Melee
+  m_Script: {fileID: 11500000, guid: d4df24c67b9e03841af6f1786688b2ba, type: 3}
+  m_Name: MeleeProperties
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 21300000, guid: 08befea0e973a45a0a1c1c8bf0b06103, type: 3}
+  CharacterPrefab: {fileID: 0}
   CharacterHealth: 100
   CharacterAttackPower: 10
-  CharacterAttackRange: 5
+  CharacterAttackRange: 0
   CharacterReloadTime: 1
-  ArcherCost: 0
-  MeleeCost: 60
-  AttackParticle: {fileID: 0}
+  ArcherCost: 1
+  MeleeCost: 1
