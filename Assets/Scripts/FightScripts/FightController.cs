@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FightController : MonoBehaviour
@@ -7,28 +5,26 @@ public class FightController : MonoBehaviour
     public GameObject[] enemies;
     public GameObject[] allies;
     GameObject closestObject;
-
-    float moveSpeed = 3f;
-    float minDistance = 1.5f;
-
+    
     public Transform attackPoint;
-    public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+    
+    
 
-    public int maxHealt = 100;
-    public int currentHealt;
-    public int attackDamage = 20;
-
-    public float attackRate = 1f;
+    private float currentHealth;
+    
     float nextAttackTime = 0f;
 
-
-
+    [SerializeField] private CharacterPropertiesSO _character;
+    private UIManager _uıManager;
+    
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         allies = GameObject.FindGameObjectsWithTag("Ally");
-        currentHealt = maxHealt;
+        currentHealth = _character.CharacterHealth;
+        _uıManager = FindObjectOfType<UIManager>();
+        Debug.Log("Start: "+_uıManager.Gold);
     }
 
     void Update()
@@ -38,7 +34,7 @@ public class FightController : MonoBehaviour
         if (Time.time >= nextAttackTime)
         {
             Attack();
-            nextAttackTime = Time.time + attackRate * 10;
+            nextAttackTime = Time.time + _character.CharacterAttackRate * 10;
 
             Debug.Log("Time: " + Time.time);
             Debug.Log("Next Attack Time: " + nextAttackTime);
@@ -73,19 +69,19 @@ public class FightController : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy"))
         {
-            if (Vector3.Distance(transform.position, FindClosestOpponent(allies).transform.position) > minDistance)
+            if (Vector3.Distance(transform.position, FindClosestOpponent(allies).transform.position) > _character.CharacterAttackRange+1)
             {
                 transform.LookAt(FindClosestOpponent(allies).transform.position);
-                transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(allies).transform.position, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(allies).transform.position, _character.CharacterMoveSpeed * Time.deltaTime);
                 //Walk Animation
             }
         }
         if (gameObject.CompareTag("Ally"))
         {
-            if (Vector3.Distance(transform.position, FindClosestOpponent(enemies).transform.position) > minDistance)
+            if (Vector3.Distance(transform.position, FindClosestOpponent(enemies).transform.position) > _character.CharacterAttackRange+1)
             {
                 transform.LookAt(FindClosestOpponent(enemies).transform.position);
-                transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(enemies).transform.position, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(enemies).transform.position, _character.CharacterMoveSpeed * Time.deltaTime);
                 //Walk Animation
             }
         }
@@ -96,11 +92,21 @@ public class FightController : MonoBehaviour
     {
         //Attack animation
 
-       Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
-
+       Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, _character.CharacterAttackRange, enemyLayers);
+       
+        
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<FightController>().TakeDamage(attackDamage);
+            if (closestObject.GetComponent<Collider>() == enemy)
+            {
+                enemy.GetComponent<FightController>().TakeDamage(_character.CharacterAttackPower);
+                if (this.gameObject.CompareTag("Ally"))
+                {
+                    _uıManager.UpdateGold(_character.CharacterAttackPower);
+                    Debug.Log("Atak: "+_uıManager.Gold);
+                }
+                
+            }
             
         }
 
@@ -111,20 +117,20 @@ public class FightController : MonoBehaviour
         {
             return;
         }
-        Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);
+        Gizmos.DrawWireSphere(attackPoint.transform.position, _character.CharacterAttackRange);
     }
-    public void TakeDamage(int damage)
+    private void TakeDamage(float damage)
     {
-        currentHealt -= damage;
+        currentHealth -= damage;
 
         //Hurt animation
 
-        if (currentHealt<=0)
+        if (currentHealth<=0)
         {
             Die();
         }
     }
-    public void Die()
+    private void Die()
     {
         Debug.Log(gameObject.name + " Die");
         //Die animation

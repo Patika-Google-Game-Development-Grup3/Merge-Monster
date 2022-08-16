@@ -9,8 +9,8 @@ public class CharacterPropertiesSO : ScriptableObject
     public float CharacterHealth;
     public float CharacterAttackPower;
     public float CharacterAttackRange;
-    public float CharacterReloadTime;
     public float CharacterMoveSpeed;
+    public float CharacterAttackRate;
     public float ArcherCost = 1;
     public float MeleeCost = 1;
     
