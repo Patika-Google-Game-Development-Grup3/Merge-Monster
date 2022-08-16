@@ -15,7 +15,8 @@ MonoBehaviour:
   CharacterPrefab: {fileID: 21300000, guid: fada5bff7ecc14eab897fd34f27d6baf, type: 3}
   CharacterHealth: 100
   CharacterAttackPower: 10
-  CharacterAttackRange: 10
-  CharacterReloadTime: 1
+  CharacterAttackRange: 50
+  CharacterMoveSpeed: 10
+  CharacterAttackRate: 1
   ArcherCost: 70
   MeleeCost: 0

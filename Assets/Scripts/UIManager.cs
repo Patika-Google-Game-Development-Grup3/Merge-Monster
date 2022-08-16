@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject MainMenu;
     public GameObject MergeMenu;
     public GameObject SetActiveSlots;
+    public GameObject LevelMenu;
 
     //Merge menu buttons
     public Button BuyArcher;
@@ -27,8 +28,10 @@ public class UIManager : MonoBehaviour
     public Button MergeButton;
     public Button QuitButton;
     [SerializeField] private CharacterPropertiesSO[] _character;
+    private LevelDataSO _leveData;
 
     public TextMeshProUGUI goldPoint;
+    
     private float gold;
 
     private int sceneToContinue;
@@ -39,7 +42,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        
+        _leveData = FindObjectOfType<LevelDataSO>();
         //Merge menu buttons interaction 
         BuyArcher.onClick.AddListener(() => { gameController.PlaceRandomArcher(); });
         BuyMelee.onClick.AddListener(() => { gameController.PlaceRandomMelee(); });
@@ -47,14 +50,16 @@ public class UIManager : MonoBehaviour
         
         
         //Main menu bottons interaction
-        FightButton.onClick.AddListener(() => { ContinueGame(); });
+        FightButton.onClick.AddListener(() => { ContinueGame(); ChangeMenu(MainMenu,LevelMenu);});
         MergeButton.onClick.AddListener(() => { ChangeMenu(MainMenu, MergeMenu); });
         QuitButton.onClick.AddListener(() => { Application.Quit(); });
         
         ArcherCost.text = "Archer Cost: "+ _character[0].ArcherCost.ToString();
         MeleeCost.text = "Melee Cost: "+ _character[1].MeleeCost.ToString();
+
         
         UpdateGold(5000);
+        _leveData.PlayerDatas.PlayerTotalMoney = Gold;
     }
 
 
@@ -110,10 +115,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateGold(int amount)
+    public float UpdateGold(float amount)
     {
         Gold += amount;
         goldPoint.text = Gold.ToString();
+
+        return Gold;
     }
 
     public float ItemPrice (float amount)
@@ -122,7 +129,7 @@ public class UIManager : MonoBehaviour
         MeleeCost.text = "Melee Cost: "+ (_character[1].MeleeCost + 10);
         Gold -= amount;
         goldPoint.text = Gold.ToString();
-
+        
         return Gold;
     }
 
