@@ -299,7 +299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -839,8 +839,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 19bf35d224e1dfb4d85cc50272963723, type: 2}
   - {fileID: 11400000, guid: e197a760a4b0518448cf0e2fa28e21d9, type: 2}
   goldPoint: {fileID: 136059366}
-  meleeCounter: 0
-  archerCounter: 0
 --- !u!114 &430468723
 MonoBehaviour:
   m_ObjectHideFlags: 0

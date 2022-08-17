@@ -14,18 +14,19 @@ public class FightController : MonoBehaviour
 
     private float currentHealth;
     
-    float nextAttackTime = 0f;
 
     [SerializeField] private CharacterPropertiesSO _character;
-    private UIManager _uıManager;
-    
+    //private UIManager _uıManager;
+
+    Animator animator;
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         allies = GameObject.FindGameObjectsWithTag("Ally");
         currentHealth = _character.CharacterHealth;
-        _uıManager = FindObjectOfType<UIManager>();
-        Debug.Log("Start: "+_uıManager.Gold);
+        animator = GetComponent<Animator>();
+        //_uıManager = FindObjectOfType<UIManager>();
+        //Debug.Log("Start: "+_uıManager.Gold);
         StartCoroutine("Reload");
     }
 
@@ -33,14 +34,6 @@ public class FightController : MonoBehaviour
     {
         MoveNearTheOpponent();
 
-        if (Time.time >= nextAttackTime)
-        {
-            Attack();
-            nextAttackTime = Time.time + _character.CharacterAttackRate * 10;
-
-            Debug.Log("Time: " + Time.time);
-            Debug.Log("Next Attack Time: " + nextAttackTime);
-        }
     }
     public GameObject FindClosestOpponent(GameObject[] opponents)
     {
@@ -48,7 +41,7 @@ public class FightController : MonoBehaviour
 
         foreach (var g in opponents)
         {
-            if (g.GetComponent<Collider>().enabled == true)
+            if (g.GetComponent<Collider>().enabled == true )
             {
                 float dist = Vector3.Distance(this.gameObject.transform.position, g.transform.position);
 
@@ -68,8 +61,10 @@ public class FightController : MonoBehaviour
     {
         while (true)
         {
+            animator.SetBool("isRunning", false);
             Attack();
             yield return new WaitForSeconds(_character.CharacterAttackRate);
+            animator.SetBool("isIdle", true);
 
         }
     }
@@ -85,7 +80,10 @@ public class FightController : MonoBehaviour
                 transform.LookAt(FindClosestOpponent(allies).transform.position);
                 transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(allies).transform.position, _character.CharacterMoveSpeed * Time.deltaTime);
                 //Walk Animation
+                animator.SetBool("isRunning", true);
             }
+            
+
         }
         if (gameObject.CompareTag("Ally"))
         {
@@ -94,8 +92,10 @@ public class FightController : MonoBehaviour
                 transform.LookAt(FindClosestOpponent(enemies).transform.position);
                 transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(enemies).transform.position, _character.CharacterMoveSpeed * Time.deltaTime);
                 //Walk Animation
+                animator.SetBool("isRunning", true);
             }
         }
+        
 
     }
     
@@ -104,22 +104,26 @@ public class FightController : MonoBehaviour
         //Attack animation
 
        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, _character.CharacterAttackRange, enemyLayers);
-       
-        
-        foreach (Collider enemy in hitEnemies)
+
+        if (hitEnemies != null)
         {
-            if (closestObject.GetComponent<Collider>() == enemy)
+            foreach (Collider enemy in hitEnemies)
             {
-                enemy.GetComponent<FightController>().TakeDamage(_character.CharacterAttackPower);
-                if (this.gameObject.CompareTag("Ally"))
+                if (closestObject == enemy.gameObject)
                 {
-                    _uıManager.UpdateGold(_character.CharacterAttackPower);
-                    Debug.Log("Atak: "+_uıManager.Gold);
+                    animator.SetTrigger("Attack");
+                    enemy.GetComponent<FightController>().TakeDamage(_character.CharacterAttackPower);
+                    //if (this.gameObject.CompareTag("Ally"))
+                    //{
+                    //    _uıManager.UpdateGold(_character.CharacterAttackPower);
+                    //    Debug.Log("Atak: "+_uıManager.Gold);
+                    //}
+
                 }
-                
+
             }
-            
         }
+        
 
     }
     private void OnDrawGizmosSelected()
@@ -135,6 +139,7 @@ public class FightController : MonoBehaviour
         currentHealth -= damage;
 
         //Hurt animation
+        //animator.SetTrigger("isHurt");
 
         if (currentHealth<=0)
         {
@@ -145,6 +150,7 @@ public class FightController : MonoBehaviour
     {
         Debug.Log(gameObject.name + " Die");
         //Die animation
+        animator.SetBool("isDead", true);
         GetComponent<Collider>().enabled = false;
         this.enabled = false;
     }
