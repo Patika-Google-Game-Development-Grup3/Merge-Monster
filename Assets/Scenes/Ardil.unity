@@ -156,6 +156,7 @@ MonoBehaviour:
   MainMenu: {fileID: 0}
   MergeMenu: {fileID: 0}
   SetActiveSlots: {fileID: 0}
+  LevelMenu: {fileID: 0}
   BuyArcher: {fileID: 0}
   BuyMelee: {fileID: 0}
   BackButton: {fileID: 0}
@@ -166,6 +167,8 @@ MonoBehaviour:
   QuitButton: {fileID: 0}
   _character: []
   goldPoint: {fileID: 0}
+  meleeCounter: 0
+  archerCounter: 0
 --- !u!4 &418781310
 Transform:
   m_ObjectHideFlags: 0
@@ -471,7 +474,7 @@ PrefabInstance:
     - target: {fileID: 5697033275327809557, guid: af4e98012c9cf404b885808b72146c36,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05
+      value: -11.69
       objectReference: {fileID: 0}
     - target: {fileID: 5697033275327809557, guid: af4e98012c9cf404b885808b72146c36,
         type: 3}
