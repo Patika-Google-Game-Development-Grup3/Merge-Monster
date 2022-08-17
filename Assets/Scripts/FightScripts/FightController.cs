@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class FightController : MonoBehaviour
@@ -25,6 +26,7 @@ public class FightController : MonoBehaviour
         currentHealth = _character.CharacterHealth;
         _uıManager = FindObjectOfType<UIManager>();
         Debug.Log("Start: "+_uıManager.Gold);
+        StartCoroutine("Reload");
     }
 
     void Update()
@@ -61,6 +63,15 @@ public class FightController : MonoBehaviour
         }
         return closestObject;
 
+    }
+    IEnumerator Reload()
+    {
+        while (true)
+        {
+            Attack();
+            yield return new WaitForSeconds(_character.CharacterAttackRate);
+
+        }
     }
     public void MoveNearTheOpponent()
     {
