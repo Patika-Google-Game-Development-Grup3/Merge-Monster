@@ -3,18 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="489af195-0fd4-43f0-b81e-c100b8df0304" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Merge-Monster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Merge-Monster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Resources/Prefabs/Item3D.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Resources/Prefabs/Item3D.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Merge System Free/Scripts/GameController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ardil.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ardil.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/Level1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/StartMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scenes/StartMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FightScripts/FightController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FightScripts/FightController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/LoadObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/LoadObjects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/UserSettingsSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/UserSettingsSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Archer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Archer.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Melee.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Melee.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Scripts/CharacterPropertiesSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptables/Scripts/CharacterPropertiesSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +109,7 @@
       <workItem from="1660506976768" duration="1014000" />
       <workItem from="1660598864433" duration="9162000" />
       <workItem from="1660609081819" duration="196000" />
+      <workItem from="1660734665801" duration="8783000" />
     </task>
     <servers />
   </component>

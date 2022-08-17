@@ -11,8 +11,7 @@ public class LoadObjects : MonoBehaviour
         settings.LoadSettings();
         var itemIds = settings._userSettingsSO.UserSettings.itemId;
         var slotIds = settings._userSettingsSO.UserSettings.slotId;
-        var archerCounter = settings._userSettingsSO.UserSettings.archerCounter;
-        var meleeCounter = settings._userSettingsSO.UserSettings.meleeCounter;
+        
         
         var cnt = 0;
         for (int i = 0; i < slots.Count; i++)
