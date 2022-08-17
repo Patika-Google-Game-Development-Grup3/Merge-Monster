@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5697033275327809556}
   - component: {fileID: 502128783}
   m_Layer: 7
-  m_Name: Ally
+  m_Name: Ally 1
   m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

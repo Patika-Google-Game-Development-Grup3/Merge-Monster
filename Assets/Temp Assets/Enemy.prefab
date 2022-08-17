@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7275998416238260436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790323419493476192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.264, z: 0.902}
+  m_LocalPosition: {x: 0, y: 0.264, z: 0.916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 3798796329662871175}
   - component: {fileID: 3798796329662871174}
   - component: {fileID: 3798796329662869883}
-  m_Layer: 0
+  - component: {fileID: 1572363662}
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -145,3 +146,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   allies: []
+  attackPoint: {fileID: 7275998416238260436}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _character: {fileID: 11400000, guid: 19bf35d224e1dfb4d85cc50272963723, type: 2}
+--- !u!95 &1572363662
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3798796329662871171}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c7265a2e68cab746834dcfe816146e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
