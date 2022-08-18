@@ -14,4 +14,5 @@ public class UserSettings
     public List<int> slotId;
     public int archerCounter;
     public int meleeCounter;
+    public float totalGold;
 }
