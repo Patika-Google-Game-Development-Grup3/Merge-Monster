@@ -20,8 +20,6 @@ public class UIManager : MonoBehaviour
     public Button BackButton;
 
     public TextMeshProUGUI ArcherCost;
-    
-
     public TextMeshProUGUI MeleeCost;
     //Main menu buttons
     public Button FightButton;
@@ -29,6 +27,7 @@ public class UIManager : MonoBehaviour
     public Button QuitButton;
     [SerializeField] private CharacterPropertiesSO[] _character;
     private LevelDataSO _leveData;
+    private SettingsController _settings;
 
     public TextMeshProUGUI goldPoint;
     
@@ -43,6 +42,8 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _leveData = FindObjectOfType<LevelDataSO>();
+        _settings = FindObjectOfType<SettingsController>();
+
         //Merge menu buttons interaction 
         BuyArcher.onClick.AddListener(() => { gameController.PlaceRandomArcher(); });
         BuyMelee.onClick.AddListener(() => { gameController.PlaceRandomMelee(); });
@@ -54,12 +55,8 @@ public class UIManager : MonoBehaviour
         MergeButton.onClick.AddListener(() => { ChangeMenu(MainMenu, MergeMenu); });
         QuitButton.onClick.AddListener(() => { Application.Quit(); });
         
-        ArcherCost.text = "Archer Cost: "+ _character[0].ArcherCost.ToString();
-        MeleeCost.text = "Melee Cost: "+ _character[1].MeleeCost.ToString();
+        SetGold();
 
-        
-        UpdateGold(5000);
-        _leveData.PlayerDatas.PlayerTotalMoney = Gold;
     }
 
 
@@ -74,10 +71,10 @@ public class UIManager : MonoBehaviour
             {
                 SetActiveSlots.SetActive(false);
                 var slots = gameController.slots;
-                var settings = SettingsController.Instance;
-                settings._userSettingsSO.UserSettings.itemId = new List<int>();
-                settings._userSettingsSO.UserSettings.slotId = new List<int>();
-
+               
+                _settings._userSettingsSO.UserSettings.itemId = new List<int>();
+                _settings._userSettingsSO.UserSettings.slotId = new List<int>();
+                _settings._userSettingsSO.UserSettings.totalGold = Gold;
                 foreach (var slot in slots)
                 {
                     if (slot.currentItem == null)
@@ -86,12 +83,14 @@ public class UIManager : MonoBehaviour
                     }
                     var itemId = slot.currentItem.id;
                     var slotId = slot.id;
-                    settings._userSettingsSO.UserSettings.itemId.Add(itemId);
-                    settings._userSettingsSO.UserSettings.slotId.Add(slotId);
-                    if (itemId == 0 || itemId == 2 || itemId == 4 ) settings._userSettingsSO.UserSettings.archerCounter++;
-                    else settings._userSettingsSO.UserSettings.meleeCounter++;
+                    _settings._userSettingsSO.UserSettings.itemId.Add(itemId);
+                    _settings._userSettingsSO.UserSettings.slotId.Add(slotId);
+                    if (itemId % 2 == 0)
+                        _settings._userSettingsSO.UserSettings.archerCounter = gameController.ArcherCost;
+                    else _settings._userSettingsSO.UserSettings.meleeCounter = gameController.MeleeCost;
+                    
                 }
-                settings.SaveSettings();
+                _settings.SaveSettings();
             }
             else
             {
@@ -115,25 +114,36 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    void SetGold()
+    {
+        Gold = _settings._userSettingsSO.UserSettings.totalGold;
+        goldPoint.text = Gold.ToString();
+
+        CurrentCost();
+
+    }
+
     public float UpdateGold(float amount)
     {
         Gold += amount;
-        goldPoint.text = Gold.ToString();
-
-        return Gold;
-    }
-
-    public float ItemPrice (float amount)
-    {
-        ArcherCost.text = "Archer Cost: "+ (_character[0].ArcherCost + 10);
-        MeleeCost.text = "Melee Cost: "+ (_character[1].MeleeCost + 10);
-        Gold -= amount;
         goldPoint.text = Gold.ToString();
         
         return Gold;
     }
 
-    
-    
+    public float ItemPrice (float amount)
+    {
+        
+        Gold -= amount;
+        goldPoint.text = Gold.ToString();
+        CurrentCost();
+        
+        return Gold;
+    }
 
+    void CurrentCost()
+    {
+        ArcherCost.text = "Archer Cost: "+ (_character[0].ArcherCost + 10);
+        MeleeCost.text = "Melee Cost: "+ (_character[1].MeleeCost + 10);
+    }
 }
