@@ -143,7 +143,7 @@ public class UIManager : MonoBehaviour
 
     void CurrentCost()
     {
-        ArcherCost.text = "Archer Cost: "+ (_character[0].ArcherCost + 10);
-        MeleeCost.text = "Melee Cost: "+ (_character[1].MeleeCost + 10);
+        ArcherCost.text = " "+ (_character[0].ArcherCost + 10);
+        MeleeCost.text = " "+ (_character[1].MeleeCost + 10);
     }
 }

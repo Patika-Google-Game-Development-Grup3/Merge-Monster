@@ -32,6 +32,7 @@ public class Slot : MonoBehaviour
         itemGO.transform.localScale = Vector3.one;
 
         currentItem = itemGO.GetComponent<Item>();
+        currentItem.meshFilter = Utils.gameResources.meshes[id];
         currentItem.Init3D(id, this);
 
         ChangeStateTo(SlotState.Full);

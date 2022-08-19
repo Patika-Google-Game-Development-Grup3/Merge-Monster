@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96d9965ec9b4da58325b6a17d807e2f, type: 3}
   m_Name: Melee
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 21300000, guid: 08befea0e973a45a0a1c1c8bf0b06103, type: 3}
+  CharacterPrefab: {fileID: 919132149155446097, guid: a34a1828b0c1aa743bb7d225c87b1a55,
+    type: 3}
   CharacterHealth: 100
   CharacterAttackPower: 15
   CharacterAttackRange: 1

@@ -41,7 +41,7 @@ public class SlotCreator : MonoBehaviour
         {
             for (int y = 0; y < gridSize.y; y++)
             {
-                var slotInstance = Instantiate(slot, new Vector3((y * gap.y) + offset.y, (x * gap.x)+offset.x, 0), Quaternion.identity, transform);
+                var slotInstance = Instantiate(slot, new Vector3((y * gap.y) + offset.y, (x * gap.x)+offset.x, -20), Quaternion.identity, transform);
                 slotInstance.id = cnt;
                 gameController.slots.Add(slotInstance);
                 gameController.slotDictionary.Add(cnt, slotInstance);
