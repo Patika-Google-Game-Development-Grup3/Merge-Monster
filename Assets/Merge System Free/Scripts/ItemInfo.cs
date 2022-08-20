@@ -7,7 +7,7 @@ public class ItemInfo : MonoBehaviour
 
     public SpriteRenderer visualRenderer;
 
-    public MeshFilter meshFilter;
+    public GameObject meshFilter;
 
     public void InitDummy(int slotId, int itemId) 
     {
@@ -16,10 +16,4 @@ public class ItemInfo : MonoBehaviour
         visualRenderer.sprite = Utils.GetItemVisualById(itemId);
     }
     
-    public void InitDummy3D(int slotId, int itemId) 
-    {
-        this.slotId = slotId;
-        this.itemId = itemId;
-        meshFilter.mesh = Utils.GetItemMeshById(itemId);
-    }
 }

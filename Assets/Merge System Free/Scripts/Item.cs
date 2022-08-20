@@ -8,7 +8,7 @@ public class Item : MonoBehaviour
     public Slot parentSlot;
 
     public SpriteRenderer visualRenderer;
-    public MeshFilter meshFilter;
+    public GameObject meshFilter;
 
     public void Init(int id, Slot slot)
     {
@@ -19,8 +19,12 @@ public class Item : MonoBehaviour
     
     public void Init3D(int id, Slot slot)
     {
+        Vector3 xPos = new Vector3(slot.transform.position.x,slot.transform.position.y,slot.transform.position.z);
         this.id = id;
         this.parentSlot = slot;
-        meshFilter.mesh = Utils.GetItemMeshById(id);
+        meshFilter = Utils.GetItemMeshById(id);
+        Instantiate(meshFilter,xPos,Quaternion.identity);
+
+
     }
 }

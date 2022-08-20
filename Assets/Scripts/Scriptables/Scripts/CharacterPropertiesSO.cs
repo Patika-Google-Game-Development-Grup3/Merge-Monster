@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character Properties", menuName = "Scriptable Objects/Characters/Properties", order = 2)]
 public class CharacterPropertiesSO : ScriptableObject
 {
-    public Sprite CharacterPrefab;
+    public GameObject CharacterPrefab;
     public float CharacterHealth;
     public float CharacterAttackPower;
     public float CharacterAttackRange;

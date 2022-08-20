@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &554034052828660893
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4282248801375816969}
-  m_Layer: 0
-  m_Name: AttackPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4282248801375816969
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554034052828660893}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1209649274202146551}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3879050272790548380
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +11,6 @@ GameObject:
   - component: {fileID: 1209649274202146551}
   - component: {fileID: 8774606086081596293}
   - component: {fileID: 9132653660430932802}
-  - component: {fileID: 3857110696511020569}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -61,8 +29,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 4282248801375816969}
+  m_Children: []
   m_Father: {fileID: 9101497592133600017}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,26 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3857110696511020569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3879050272790548380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd3576f6baaddcb449dd9e4c25fe2f97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies: []
-  allies: []
-  attackPoint: {fileID: 4282248801375816969}
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  _character: {fileID: 11400000, guid: 19bf35d224e1dfb4d85cc50272963723, type: 2}
-  "_u\u0131Manager": {fileID: 0}
 --- !u!1 &7579219257871326022
 GameObject:
   m_ObjectHideFlags: 0
