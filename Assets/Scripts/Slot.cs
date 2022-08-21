@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 [System.Serializable]
@@ -30,15 +31,16 @@ public class Slot : MonoBehaviour
         
         itemGO.transform.SetParent(this.transform);
         itemGO.transform.localPosition = Vector3.zero;
-        itemGO.transform.localScale = Vector3.one / 2;
+        //itemGO.transform.localRotation = Quaternion.Euler(-90,0,0);
+        itemGO.transform.localScale = Vector3.one;
 
         currentItem = itemGO.GetComponent<Item>();
 
         var modelObj = currentItem.Init3D(id, this, type);
-        var model = Instantiate(modelObj, Vector3.zero, transform.rotation, itemGO.transform);
+        var model = Instantiate(modelObj, Vector3.zero, itemGO.transform.rotation, itemGO.transform);
         model.transform.localPosition = Vector3.zero;
-        model.transform.localRotation = Quaternion.identity;
-        model.transform.localScale = Vector3.one;
+        model.transform.localRotation = quaternion.Euler(0, 0, 0);
+        model.transform.localScale = Vector3.one / 2;
         
         ChangeStateTo(SlotState.Full);
     }
