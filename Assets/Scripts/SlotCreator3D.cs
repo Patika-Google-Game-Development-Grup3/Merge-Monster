@@ -50,6 +50,7 @@ public class SlotCreator3D : MonoBehaviour
          
                 if (slotIds.Contains(cnt))
                 {
+                    Debug.Log("VAR");
                     var desiredItem = itemIds[loadCnt];
                     slotInstance.CreateItem3D(desiredItem);
                     loadCnt++;
