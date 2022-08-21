@@ -18,22 +18,24 @@ public class ToMenu : MonoBehaviour
 
     [SerializeField]
     private Button BackFromFightScreenButton;
+    private SettingsController _settings;
 
     private void Awake()
     {
+        _settings = SettingsController.Instance;
         instance = this;
         BackFromFightScreenButton.onClick.AddListener(() => { LoadMainMenu(); });
     }
 
     public void LoadMainMenu()
     {
-        var settings = SettingsController.Instance;
+        
         SetActiveSlots.SetActive(false);
         var slots = gameController.slots;
         
-        settings._userSettingsSO.UserSettings.itemId = new List<int>();
-        settings._userSettingsSO.UserSettings.slotId = new List<int>();
-        settings._userSettingsSO.UserSettings.totalGold = UIManager.current.Gold;
+        _settings._userSettingsSO.UserSettings.itemId = new List<int>();
+        _settings._userSettingsSO.UserSettings.slotId = new List<int>();
+        _settings._userSettingsSO.UserSettings.totalGold = UIManager.current.Gold;
         
         foreach (var slot in slots)
         {
@@ -44,19 +46,20 @@ public class ToMenu : MonoBehaviour
             
             var itemId = slot.currentItem.id;
             var slotId = slot.id;
-            settings._userSettingsSO.UserSettings.itemId.Add(itemId);
-            settings._userSettingsSO.UserSettings.slotId.Add(slotId);
+            _settings._userSettingsSO.UserSettings.itemId.Add(itemId);
+            _settings._userSettingsSO.UserSettings.slotId.Add(slotId);
 
             if (itemId%2 == 0)
             {
-                settings._userSettingsSO.UserSettings.archerCounter = gameController.ArcherCost;
+                _settings._userSettingsSO.UserSettings.archerCounter = gameController.ArcherCost;
             }
             else
             {
-                settings._userSettingsSO.UserSettings.meleeCounter = gameController.MeleeCost;
+                _settings._userSettingsSO.UserSettings.meleeCounter = gameController.MeleeCost;
             }
         }
-        settings.SaveSettings();
+        
+        _settings.SaveSettings();
 
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
@@ -65,6 +68,8 @@ public class ToMenu : MonoBehaviour
 
     public void NextLevel()
     {
+        _settings._userSettingsSO.UserSettings.totalGold = UIManager.current.Gold;
+        _settings.SaveSettings();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

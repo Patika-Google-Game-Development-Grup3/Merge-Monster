@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   UserSettings:
-    itemId: 0000000001000000
-    slotId: 020000002e000000
-    archerCounter: 1
-    meleeCounter: 1
-    totalGold: 1e+10
+    itemId: 
+    slotId: 
+    archerCounter: 0
+    meleeCounter: 0
+    totalGold: 1000

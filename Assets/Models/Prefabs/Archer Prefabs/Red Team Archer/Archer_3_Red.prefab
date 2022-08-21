@@ -615,7 +615,7 @@ MonoBehaviour:
     m_Bits: 128
   healthBar: {fileID: 7407253970778444245}
   CurrentHealth: 0
-  _character: {fileID: 11400000, guid: 19bf35d224e1dfb4d85cc50272963723, type: 2}
+  _character: {fileID: 11400000, guid: 612c18aa9e054494c9619ff05664f3dd, type: 2}
 --- !u!1 &2559235805405189436
 GameObject:
   m_ObjectHideFlags: 0
