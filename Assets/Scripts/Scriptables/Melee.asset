@@ -20,5 +20,5 @@ MonoBehaviour:
   CharacterMoveSpeed: 1
   CharacterAttackRate: 1
   ArcherCost: 0
-  MeleeCost: 10
+  MeleeCost: 90
   AttackParticle: {fileID: 0}
