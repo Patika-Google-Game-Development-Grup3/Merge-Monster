@@ -1521,6 +1521,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slots3D
       objectReference: {fileID: 0}
+    - target: {fileID: 7817310584645812196, guid: c73a66d4025256343be82b3f1f15ba96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7817310584645812199, guid: c73a66d4025256343be82b3f1f15ba96,
         type: 3}
       propertyPath: m_RootOrder

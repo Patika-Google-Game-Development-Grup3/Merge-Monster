@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
         
         
         //Main menu bottons interaction
-        FightButton.onClick.AddListener(() => { ContinueGame(); ChangeMenu(MainMenu,LevelMenu);});
+        FightButton.onClick.AddListener(() => { /*ChangeMenu(MainMenu,LevelMenu)*/; ContinueGame();});
         MergeButton.onClick.AddListener(() => { ChangeMenu(MainMenu, MergeMenu); });
         QuitButton.onClick.AddListener(() => { Application.Quit(); });
         
