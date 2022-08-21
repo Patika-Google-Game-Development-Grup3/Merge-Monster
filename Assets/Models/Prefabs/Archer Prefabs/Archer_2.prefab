@@ -983,7 +983,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4366653110291358617}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd3576f6baaddcb449dd9e4c25fe2f97, type: 3}
   m_Name: 
@@ -994,6 +994,8 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  healthBar: {fileID: 0}
+  CurrentHealth: 0
   _character: {fileID: 11400000, guid: 5b6ae30dd7550e4469e7d79f72f5a356, type: 2}
 --- !u!1 &4565839214270513346
 GameObject:

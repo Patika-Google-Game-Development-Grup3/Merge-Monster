@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit);
 
         //we hit something
-        if (hit.collider != null)
+        if (hit.collider != null && hit.collider.CompareTag("Slot"))
         {
             //we are grabbing the item in a full slot
             var slot = hit.transform.GetComponent<Slot>();
