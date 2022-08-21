@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: -5486975774518488522}
   m_Layer: 0
   m_Name: ch1_attack
-  m_TagString: Untagged
+  m_TagString: 3D
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

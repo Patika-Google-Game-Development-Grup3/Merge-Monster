@@ -7,6 +7,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager current;
     [SerializeField]private GameController gameController;
 
     public GameObject MainMenu;
@@ -36,13 +37,14 @@ public class UIManager : MonoBehaviour
     private float gold;
 
     private int sceneToContinue;
-
+    
     public float Gold { get => gold; set => gold = value; }
 
 
 
     private void Start()
     {
+        current = this;
         _leveData = FindObjectOfType<LevelDataSO>();
         _settings = SettingsController.Instance;
 
@@ -51,6 +53,7 @@ public class UIManager : MonoBehaviour
         BuyArcher.onClick.AddListener(() => { gameController.PlaceRandomArcher(); });
         BuyMelee.onClick.AddListener(() => { gameController.PlaceRandomMelee(); });
         BackButton.onClick.AddListener(() => { ChangeMenu(MergeMenu, MainMenu); });
+        
         
         
         //Main menu bottons interaction

@@ -34,11 +34,11 @@ public class Slot : MonoBehaviour
 
         currentItem = itemGO.GetComponent<Item>();
 
-        var modelObj = currentItem.Init3D(currentItem.id, currentItem.parentSlot, currentItem.type);
+        var modelObj = currentItem.Init3D(id, this, type);
         var model = Instantiate(modelObj, Vector3.zero, transform.rotation, itemGO.transform);
         model.transform.localPosition = Vector3.zero;
         model.transform.localRotation = Quaternion.identity;
-        model.transform.localScale = Vector3.one * 2;
+        model.transform.localScale = Vector3.one;
         
         ChangeStateTo(SlotState.Full);
     }
