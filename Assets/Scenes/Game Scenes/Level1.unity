@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1388,7 +1388,7 @@ GameObject:
   - component: {fileID: 951003955}
   - component: {fileID: 951003954}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: BackFromFightScreenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1520,6 +1520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slots3D
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817310584645812196, guid: c73a66d4025256343be82b3f1f15ba96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7817310584645812199, guid: c73a66d4025256343be82b3f1f15ba96,
         type: 3}
@@ -1656,14 +1661,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 30, z: -45}
+  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
+  m_LocalPosition: {x: 0, y: 13, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1934,6 +1939,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1127952766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7817310584645812196, guid: c73a66d4025256343be82b3f1f15ba96,
+    type: 3}
+  m_PrefabInstance: {fileID: 956581200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1166421432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,7 +2383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f015d1882348d46139f2f76e19b4fece, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 93a81e2907f34da4989b0a715d7b284e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2397,11 +2408,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7499684477818271198, guid: 34b40176857dfd24f95d88e8da325d28,
+        type: 3}
+      propertyPath: SetActiveSlots
+      value: 
+      objectReference: {fileID: 1127952766}
+    - target: {fileID: 7499684477818271198, guid: 34b40176857dfd24f95d88e8da325d28,
+        type: 3}
+      propertyPath: BackFromFightScreenButton
+      value: 
+      objectReference: {fileID: 951003954}
     - target: {fileID: 7510329810434168043, guid: 34b40176857dfd24f95d88e8da325d28,
         type: 3}
       propertyPath: m_Name
       value: Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 7510329810434168044, guid: 34b40176857dfd24f95d88e8da325d28,
+        type: 3}
+      propertyPath: character.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510329810434168044, guid: 34b40176857dfd24f95d88e8da325d28,
+        type: 3}
+      propertyPath: character.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 19bf35d224e1dfb4d85cc50272963723,
+        type: 2}
+    - target: {fileID: 7510329810434168044, guid: 34b40176857dfd24f95d88e8da325d28,
+        type: 3}
+      propertyPath: character.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e197a760a4b0518448cf0e2fa28e21d9,
+        type: 2}
     - target: {fileID: 7510329810434168045, guid: 34b40176857dfd24f95d88e8da325d28,
         type: 3}
       propertyPath: m_RootOrder
@@ -2946,6 +2984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Load
+      objectReference: {fileID: 0}
+    - target: {fileID: 799800835549037904, guid: 62760c151ffee2f4e967aa589a676ad7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 799800835549037906, guid: 62760c151ffee2f4e967aa589a676ad7,
         type: 3}
