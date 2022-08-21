@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterPrefab: {fileID: 919132149155446097, guid: 156ec62a5b5b10442ba375b8c075c98a,
     type: 3}
-  CharacterHealth: 100
+  CharacterHealth: 1000
   CharacterAttackPower: 10
   CharacterAttackRange: 5
   CharacterMoveSpeed: 3
