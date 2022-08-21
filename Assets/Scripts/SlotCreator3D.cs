@@ -60,6 +60,7 @@ public class SlotCreator3D : MonoBehaviour
             }
         }
         workOnce = true;
+        transform.rotation = Quaternion.Euler(0, -90, 0);
     }
 
 }
