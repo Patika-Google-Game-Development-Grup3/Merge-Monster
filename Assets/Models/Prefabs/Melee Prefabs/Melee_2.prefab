@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5796083194868732971}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd3576f6baaddcb449dd9e4c25fe2f97, type: 3}
   m_Name: 
@@ -1060,7 +1060,7 @@ MonoBehaviour:
     m_Bits: 64
   healthBar: {fileID: 8936125568177144019}
   CurrentHealth: 0
-  _character: {fileID: 11400000, guid: e197a760a4b0518448cf0e2fa28e21d9, type: 2}
+  _character: {fileID: 11400000, guid: a00a387d9108b33488be28a146f3a188, type: 2}
 --- !u!95 &815724151926240342
 Animator:
   serializedVersion: 4

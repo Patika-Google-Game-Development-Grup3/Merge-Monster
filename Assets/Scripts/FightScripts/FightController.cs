@@ -13,9 +13,11 @@ public class FightController : MonoBehaviour
     public HealthBar healthBar;
     public float CurrentHealth;
 
+    
+
 
     [SerializeField] private CharacterPropertiesSO _character;
-    //private UIManager _uıManager;
+    private UIManager _uıManager;
 
     Animator animator;
     void Start()
@@ -24,8 +26,8 @@ public class FightController : MonoBehaviour
         allies = GameObject.FindGameObjectsWithTag("Ally");
         CurrentHealth = _character.CharacterHealth;
         animator = GetComponent<Animator>();
-        healthBar.SetMaxHealth(_character.CharacterHealth);
-        //_uıManager = FindObjectOfType<UIManager>();
+        healthBar.SetMaxHealth(CurrentHealth);
+        _uıManager = FindObjectOfType<UIManager>();
         //Debug.Log("Start: "+_uıManager.Gold);
         StartCoroutine("Reload");
     }
@@ -73,27 +75,33 @@ public class FightController : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         allies = GameObject.FindGameObjectsWithTag("Ally");
 
-        if (gameObject.CompareTag("Enemy"))
+        if ( allies.Length > 0)
         {
-            if (Vector3.Distance(transform.position, FindClosestOpponent(allies).transform.position) > _character.CharacterAttackRange+1)
+            if (gameObject.CompareTag("Enemy"))
             {
-                transform.LookAt(FindClosestOpponent(allies).transform.position);
-                transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(allies).transform.position, _character.CharacterMoveSpeed * Time.deltaTime);
-                //Walk Animation
-                animator.SetBool("isRunning", true);
+                if (Vector3.Distance(transform.position, FindClosestOpponent(allies).transform.position) > _character.CharacterAttackRange+1)
+                {
+                    transform.LookAt(FindClosestOpponent(allies).transform.position);
+                    transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(allies).transform.position, _character.CharacterMoveSpeed * Time.deltaTime);
+                    //Walk Animation
+                    animator.SetBool("isRunning", true);
+                }
             }
-            
-
         }
+       
         if (gameObject.CompareTag("Ally"))
         {
-            if (Vector3.Distance(transform.position, FindClosestOpponent(enemies).transform.position) > _character.CharacterAttackRange+1)
+            if (enemies.Length > 0)
             {
-                transform.LookAt(FindClosestOpponent(enemies).transform.position);
-                transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(enemies).transform.position, _character.CharacterMoveSpeed * Time.deltaTime);
-                //Walk Animation
-                animator.SetBool("isRunning", true);
+                if (Vector3.Distance(transform.position, FindClosestOpponent(enemies).transform.position) > _character.CharacterAttackRange+1  )
+                {
+                    transform.LookAt(FindClosestOpponent(enemies).transform.position);
+                    transform.position = Vector3.MoveTowards(transform.position, FindClosestOpponent(enemies).transform.position, _character.CharacterMoveSpeed * Time.deltaTime);
+                    //Walk Animation
+                    animator.SetBool("isRunning", true);
+                }
             }
+           
         }
         
 
@@ -114,11 +122,11 @@ public class FightController : MonoBehaviour
                     animator.SetBool("isRunning",false);
                     animator.SetTrigger("Attack");
                     enemy.GetComponent<FightController>().TakeDamage(_character.CharacterAttackPower);
-                    //if (this.gameObject.CompareTag("Ally"))
-                    //{
-                    //    _uıManager.UpdateGold(_character.CharacterAttackPower);
-                    //    Debug.Log("Atak: "+_uıManager.Gold);
-                    //}
+                    if (this.gameObject.CompareTag("Ally"))
+                    {
+                        _uıManager.UpdateGold(_character.CharacterAttackPower);
+                        Debug.Log("Atak: "+_uıManager.Gold);
+                    }
 
                 }
 
@@ -155,6 +163,14 @@ public class FightController : MonoBehaviour
         animator.SetBool("isDead", true);
         GetComponent<Collider>().enabled = false;
         this.enabled = false;
+        StartCoroutine(DestroyChar());
+
+    }
+
+    IEnumerator DestroyChar()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
     }
 
 }

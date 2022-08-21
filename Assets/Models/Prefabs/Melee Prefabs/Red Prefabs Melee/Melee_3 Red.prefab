@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Bits: 128
   healthBar: {fileID: 2942572185677319299}
   CurrentHealth: 0
-  _character: {fileID: 11400000, guid: e197a760a4b0518448cf0e2fa28e21d9, type: 2}
+  _character: {fileID: 11400000, guid: 295ebf0b81a479f43a0079cf70a396ae, type: 2}
 --- !u!95 &6353531958652863901
 Animator:
   serializedVersion: 4

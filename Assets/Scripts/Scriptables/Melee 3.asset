@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b96d9965ec9b4da58325b6a17d807e2f, type: 3}
-  m_Name: Melee
+  m_Name: Melee 3
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 2563702849158024224, guid: 32dd9883b660b9142812f41e14ff617d,
+  CharacterPrefab: {fileID: 2132696184124382731, guid: 9bd6557518dc4af4b875be13b42e2e51,
     type: 3}
-  CharacterHealth: 100
-  CharacterAttackPower: 15
+  CharacterHealth: 250
+  CharacterAttackPower: 25
   CharacterAttackRange: 1
-  CharacterMoveSpeed: 1
+  CharacterMoveSpeed: 2
   CharacterAttackRate: 1
   ArcherCost: 0
-  MeleeCost: 20
+  MeleeCost: 10
   AttackParticle: {fileID: 0}

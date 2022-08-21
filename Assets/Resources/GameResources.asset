@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: GameResources
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 21300000, guid: 32c895988c7974344ade1a874f2ccb85, type: 3}
-  - {fileID: 21300000, guid: da30bf98473783c45b7e87bab08e1232, type: 3}
-  - {fileID: 21300000, guid: 81ea6594f5e66bf4cbfe15ba86927a71, type: 3}
-  - {fileID: 21300000, guid: 32c895988c7974344ade1a874f2ccb85, type: 3}
-  - {fileID: 21300000, guid: da30bf98473783c45b7e87bab08e1232, type: 3}
-  - {fileID: 21300000, guid: da30bf98473783c45b7e87bab08e1232, type: 3}
+  - {fileID: 21300000, guid: a38cc9dac0a58594aabf70348c6f9a12, type: 3}
+  - {fileID: 21300000, guid: cdb253cc070cd3443b104373e4870c50, type: 3}
+  - {fileID: 21300000, guid: b8e13d62e4fae55438fd5937e36d897e, type: 3}
+  - {fileID: 21300000, guid: 86bf1cfe2a3b90841829c7b8396fae92, type: 3}
+  - {fileID: 21300000, guid: 8722a7d5b12bbf947bd387c031a7f87b, type: 3}
+  - {fileID: 21300000, guid: a4ab42cee63562147ada80c956a305c1, type: 3}
   meshes: []
   itemGOs:
   - {fileID: 5570770439629801495, guid: 82ace40b28ef2a54da224054d3121433, type: 3}
