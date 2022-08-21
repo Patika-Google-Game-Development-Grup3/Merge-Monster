@@ -9,11 +9,10 @@ public class FightController : MonoBehaviour
     
     public Transform attackPoint;
     public LayerMask enemyLayers;
-    
-    
 
-    private float currentHealth;
-    
+    public HealthBar healthBar;
+    public float CurrentHealth;
+
 
     [SerializeField] private CharacterPropertiesSO _character;
     //private UIManager _uıManager;
@@ -23,8 +22,9 @@ public class FightController : MonoBehaviour
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         allies = GameObject.FindGameObjectsWithTag("Ally");
-        currentHealth = _character.CharacterHealth;
+        CurrentHealth = _character.CharacterHealth;
         animator = GetComponent<Animator>();
+        healthBar.SetMaxHealth(_character.CharacterHealth);
         //_uıManager = FindObjectOfType<UIManager>();
         //Debug.Log("Start: "+_uıManager.Gold);
         StartCoroutine("Reload");
@@ -111,6 +111,7 @@ public class FightController : MonoBehaviour
             {
                 if (closestObject == enemy.gameObject)
                 {
+                    animator.SetBool("isRunning",false);
                     animator.SetTrigger("Attack");
                     enemy.GetComponent<FightController>().TakeDamage(_character.CharacterAttackPower);
                     //if (this.gameObject.CompareTag("Ally"))
@@ -136,12 +137,13 @@ public class FightController : MonoBehaviour
     }
     private void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        CurrentHealth -= damage;
+        healthBar.SetHealth(CurrentHealth);
 
         //Hurt animation
         //animator.SetTrigger("isHurt");
 
-        if (currentHealth<=0)
+        if (CurrentHealth<=0)
         {
             Die();
         }
