@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Ally
   - Level
+  - Slot
   layers:
   - Default
   - TransparentFX
