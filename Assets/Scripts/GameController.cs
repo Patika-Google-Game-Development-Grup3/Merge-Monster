@@ -110,6 +110,22 @@ public class GameController : MonoBehaviour
 
                     slot.ItemGrabbed();
                 }
+                else if (hit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("3D"))
+                {
+                    var itemGO = (GameObject) Instantiate(Resources.Load("Prefabs/ItemDummy3D"));
+                    itemGO.transform.position = slot.transform.position;
+                    itemGO.transform.localScale = Vector3.one * 2;
+                    
+                    carryingItem = itemGO.GetComponent<ItemInfo>();
+
+                    var modelObj = carryingItem.InitDummy3D(slot.currentItem.id, slot.id, slot.currentItem.type);
+                    var model = Instantiate(modelObj, Vector3.zero, transform.rotation, itemGO.transform);
+                    model.transform.localPosition = Vector3.zero;
+                    model.transform.localRotation = Quaternion.identity;
+                    model.transform.localScale = Vector3.one / 2;
+                    
+                    slot.ItemGrabbed();
+                }
               
             }
             //we are dropping an item to empty slot

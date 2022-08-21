@@ -5,16 +5,15 @@ using UnityEngine;
 public class LoadObjects : MonoBehaviour
 {
     public List<Slot> slots;
-    void Start()
+    void Awake()
     {
         var settings = SettingsController.Instance;
         settings.LoadSettings();
         var itemIds = settings._userSettingsSO.UserSettings.itemId;
         var slotIds = settings._userSettingsSO.UserSettings.slotId;
-        
-        
+
         var cnt = 0;
-        for (int i = 0; i < slots.Count; i++)
+        for (int i = 0; i < 64; i++)
         {
             if (slotIds.Contains(i))
             {

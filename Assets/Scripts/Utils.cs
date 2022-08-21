@@ -20,4 +20,17 @@ public static class Utils
     {
         return gameResources.meshes[itemId];
     }
+
+    public static GameObject GetGameObjectById(int itemId, int type)
+    {
+        switch (type)
+        {
+            case 0:
+                return gameResources.itemGOs[itemId];
+            case 1:
+                return gameResources.itemGOs[itemId];
+            default:
+                return null;
+        }
+    }
 }

@@ -5,10 +5,11 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public int id;
+    public int type;
     public Slot parentSlot;
 
     public SpriteRenderer visualRenderer;
-    public GameObject meshFilter;
+    public GameObject model;
 
     public void Init(int id, Slot slot)
     {
@@ -17,14 +18,13 @@ public class Item : MonoBehaviour
         visualRenderer.sprite = Utils.GetItemVisualById(id);
     }
     
-    public void Init3D(int id, Slot slot)
+    public GameObject Init3D(int id, Slot slot, int type)
     {
-        Vector3 xPos = new Vector3(slot.transform.position.x,slot.transform.position.y,slot.transform.position.z);
+        this.type = type;
         this.id = id;
         this.parentSlot = slot;
-        meshFilter = Utils.GetItemMeshById(id);
-        Instantiate(meshFilter,xPos,Quaternion.identity);
+        model = Utils.GetGameObjectById(id, type);
 
-
+        return model;
     }
 }

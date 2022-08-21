@@ -13,16 +13,15 @@ MonoBehaviour:
   m_Name: GameResources
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 21300000, guid: ca69beba089034d33a126cb8ecad0489, type: 3}
-  - {fileID: 21300000, guid: 08befea0e973a45a0a1c1c8bf0b06103, type: 3}
-  - {fileID: 21300000, guid: b012d35a6ad8345b79b1bf3862b9efb8, type: 3}
-  - {fileID: 21300000, guid: 84f24fec6194249de9786b735dbdd356, type: 3}
-  - {fileID: 21300000, guid: d281ac3024ab74fa79b631dbe574758c, type: 3}
-  - {fileID: 21300000, guid: 3eae5b9e53e18428ca1fc317e6135059, type: 3}
-  meshes:
+  - {fileID: 21300000, guid: 32c895988c7974344ade1a874f2ccb85, type: 3}
+  - {fileID: 21300000, guid: da30bf98473783c45b7e87bab08e1232, type: 3}
+  - {fileID: 21300000, guid: 81ea6594f5e66bf4cbfe15ba86927a71, type: 3}
+  - {fileID: 21300000, guid: 32c895988c7974344ade1a874f2ccb85, type: 3}
+  - {fileID: 21300000, guid: da30bf98473783c45b7e87bab08e1232, type: 3}
+  meshes: []
+  itemGOs:
   - {fileID: 4215008077065303257, guid: a19895ac76bfdf24bac24670dd0c3633, type: 3}
-  - {fileID: 7830009870568714441, guid: 0906c7c5c0df63342bd26cc279dbd629, type: 3}
   - {fileID: 5525945495240086044, guid: b2649d5acea9b2e47b05add2e3ad655c, type: 3}
+  - {fileID: 7830009870568714441, guid: 0906c7c5c0df63342bd26cc279dbd629, type: 3}
   - {fileID: 4665840902915868960, guid: f3a74ee6ac1c37a468dabf9256417fde, type: 3}
-  - {fileID: 2241278445959215425, guid: 137318244c953aa4aba9a546b61dbf90, type: 3}
   - {fileID: 2241278445959215425, guid: 137318244c953aa4aba9a546b61dbf90, type: 3}

@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI goldPoint;
     
+    
+    
     private float gold;
 
     private int sceneToContinue;
@@ -42,7 +44,8 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _leveData = FindObjectOfType<LevelDataSO>();
-        _settings = FindObjectOfType<SettingsController>();
+        _settings = SettingsController.Instance;
+
 
         //Merge menu buttons interaction 
         BuyArcher.onClick.AddListener(() => { gameController.PlaceRandomArcher(); });
@@ -62,7 +65,6 @@ public class UIManager : MonoBehaviour
 
     void ChangeMenu(GameObject activeMenu, GameObject setMenu)
     {
-        
         if (setMenu != null && activeMenu)
         {
             activeMenu.SetActive(false);
@@ -71,20 +73,23 @@ public class UIManager : MonoBehaviour
             {
                 SetActiveSlots.SetActive(false);
                 var slots = gameController.slots;
-               
+
                 _settings._userSettingsSO.UserSettings.itemId = new List<int>();
                 _settings._userSettingsSO.UserSettings.slotId = new List<int>();
                 _settings._userSettingsSO.UserSettings.totalGold = Gold;
+                
                 foreach (var slot in slots)
                 {
                     if (slot.currentItem == null)
                     {
                         continue;
                     }
+                    
                     var itemId = slot.currentItem.id;
                     var slotId = slot.id;
                     _settings._userSettingsSO.UserSettings.itemId.Add(itemId);
                     _settings._userSettingsSO.UserSettings.slotId.Add(slotId);
+                    
                     if (itemId % 2 == 0)
                         _settings._userSettingsSO.UserSettings.archerCounter = gameController.ArcherCost;
                     else _settings._userSettingsSO.UserSettings.meleeCounter = gameController.MeleeCost;
@@ -101,16 +106,15 @@ public class UIManager : MonoBehaviour
 
     void ContinueGame()
     {
-        sceneToContinue = 0; //PlayerPrefs.GetInt("SavedScene");
+        sceneToContinue = PlayerPrefs.GetInt("SavedScene");
 
-        if (sceneToContinue !=0 )
+        if (sceneToContinue !=0)
         {
             SceneManager.LoadScene(sceneToContinue);
         }
         else
         {
             SceneManager.LoadScene(1);
-            
         }
     }
 

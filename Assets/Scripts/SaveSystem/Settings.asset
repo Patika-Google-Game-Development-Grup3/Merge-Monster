@@ -15,6 +15,6 @@ MonoBehaviour:
   UserSettings:
     itemId: 
     slotId: 
-    archerCounter: 0
-    meleeCounter: 0
-    totalGold: 1000
+    archerCounter: 11
+    meleeCounter: 4
+    totalGold: 1e+10

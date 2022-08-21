@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 3545853733391920739}
   - component: {fileID: 6265993034039644979}
   m_Layer: 0
-  m_Name: ch1_attack
+  m_Name: ch1_attack 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

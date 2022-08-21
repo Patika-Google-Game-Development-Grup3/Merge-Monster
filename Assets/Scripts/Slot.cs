@@ -6,6 +6,7 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     public int id;
+    public int type;
     public Item currentItem;
     public SlotState state = SlotState.Empty;
 
@@ -29,12 +30,16 @@ public class Slot : MonoBehaviour
         
         itemGO.transform.SetParent(this.transform);
         itemGO.transform.localPosition = Vector3.zero;
-        itemGO.transform.localScale = Vector3.one;
+        itemGO.transform.localScale = Vector3.one / 2;
 
         currentItem = itemGO.GetComponent<Item>();
-        currentItem.meshFilter = Utils.gameResources.meshes[id];
-        currentItem.Init3D(id, this);
 
+        var modelObj = currentItem.Init3D(currentItem.id, currentItem.parentSlot, currentItem.type);
+        var model = Instantiate(modelObj, Vector3.zero, transform.rotation, itemGO.transform);
+        model.transform.localPosition = Vector3.zero;
+        model.transform.localRotation = Quaternion.identity;
+        model.transform.localScale = Vector3.one * 2;
+        
         ChangeStateTo(SlotState.Full);
     }
 

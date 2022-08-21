@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class ToMenu : MonoBehaviour
 {
+    public static ToMenu instance;
     [SerializeField]private GameController gameController;
     private int currentSceneIndex;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void LoadMainMenu()
     {
@@ -27,6 +34,7 @@ public class ToMenu : MonoBehaviour
             settings._userSettingsSO.UserSettings.slotId.Add(slotId);
         }
         settings.SaveSettings();
+
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
         SceneManager.LoadScene(0);
