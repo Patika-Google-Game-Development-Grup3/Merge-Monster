@@ -16,8 +16,8 @@ MonoBehaviour:
     type: 3}
   CharacterHealth: 1000
   CharacterAttackPower: 10
-  CharacterAttackRange: 5
+  CharacterAttackRange: 15
   CharacterMoveSpeed: 3
   CharacterAttackRate: 1
-  ArcherCost: 10
+  ArcherCost: 90
   MeleeCost: 0
